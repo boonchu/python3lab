@@ -3,16 +3,16 @@
 ##### Getting started on CentOS 7/Red Hat Enterprise 7
 * install postgresql server and enable service on unit file at boot time.
 ```
-sudo yum install -y postgresql-server
-sudo postgresql-setup initdb
-sudo systemctl start postgresql.service
-sudo systemctl enable postgresql.service
+$ sudo yum install -y postgresql-server
+$ sudo postgresql-setup initdb
+$ sudo systemctl start postgresql.service
+$ sudo systemctl enable postgresql.service
 ```
 * check running process 
 ```
-sudo systemctl status postgresql.service -l
+$ sudo systemctl status postgresql.service -l
 
-pstree -p postgres
+$ pstree -p postgres
 postgres(2163)─┬─postgres(2164)
                ├─postgres(2166)
                ├─postgres(2167)
@@ -22,8 +22,8 @@ postgres(2163)─┬─postgres(2164)
 ```
 * access postgres through psql
 ```
-sudo -u postgres -s
-psql
+$ sudo -u postgres -s
+$ psql
 postgres=# CREATE SCHEMA mydb;
 postgres=# CREATE USER bigchoo PASSWORD 'mydb123';
 postgres=# GRANT ALL ON SCHEMA mydb to bigchoo;
