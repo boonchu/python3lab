@@ -54,4 +54,9 @@ postgres=> SELECT * from mydb.ticket;
 postgres=> \q
 ```
 
+Reference:
+[psycopg postgresql database adapter](http://initd.org/psycopg/docs)
+[wiki](https://wiki.postgresql.org/wiki/First_steps)
+[document 9.x](http://www.postgresql.org/docs/9.1/static/index.html)
+
 
