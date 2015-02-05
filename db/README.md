@@ -92,7 +92,11 @@ primary key, btree, for table "mydb.ticket"
 ##### Authentication 
 * [how to manage db authentication](http://www.postgresql.org/docs/9.2/interactive/auth-pg-hba-conf.html)
 
+##### Performance Metrics
+* [topic in inspeqtor](https://github.com/mperham/inspeqtor/wiki/Daemon-Specific-Metrics#postgresql)
+
 Reference:
+* [installation guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04)
 * [psycopg postgresql database adapter](http://initd.org/psycopg/docs)
 * [wiki](https://wiki.postgresql.org/wiki/First_steps)
 * [document 9.x](http://www.postgresql.org/docs/9.1/static/index.html)
