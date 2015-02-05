@@ -37,7 +37,7 @@ postgres=# \q
 sudo yum install python-psycopg2
 ```
 * run create_table.py to populate mydb.ticket table in postgres database.
-  In our case, I use python 2.x since my adapter version is between 2.5 - 2.7.
+  In my case, I use python 2.x since my adapter version is between 2.5 - 2.7.
 ```
 $ chmod +x ./create_table.py
 $ ./create_table.py
@@ -52,6 +52,41 @@ postgres=> SELECT * from mydb.ticket;
 (1 row)
 
 postgres=> \q
+```
+
+##### Operation
+* describe about your table
+```
+postgres=> \d mydb.*
+                                  Table "mydb.ticket"
+ Column |       Type        |                        Modifiers
+--------+-------------------+----------------------------------------------------------
+ id     | integer           | not null default nextval('mydb.ticket_id_seq'::regclass)
+ num    | integer           |
+ data   | character varying |
+Indexes:
+    "ticket_pkey" PRIMARY KEY, btree (id)
+
+         Sequence "mydb.ticket_id_seq"
+    Column     |  Type   |        Value
+---------------+---------+---------------------
+ sequence_name | name    | ticket_id_seq
+ last_value    | bigint  | 1
+ start_value   | bigint  | 1
+ increment_by  | bigint  | 1
+ max_value     | bigint  | 9223372036854775807
+ min_value     | bigint  | 1
+ cache_value   | bigint  | 1
+ log_cnt       | bigint  | 32
+ is_cycled     | boolean | f
+ is_called     | boolean | t
+Owned by: mydb.ticket.id
+
+   Index "mydb.ticket_pkey"
+ Column |  Type   | Definition
+--------+---------+------------
+ id     | integer | id
+primary key, btree, for table "mydb.ticket"
 ```
 
 ##### Authentication 
