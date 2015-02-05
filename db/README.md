@@ -20,7 +20,7 @@ postgres(2163)─┬─postgres(2164)
                ├─postgres(2169)
                └─postgres(2170)
 ```
-* access postgres through psql
+* access postgres through psql to setup schema
 ```
 $ sudo -u postgres -s
 $ psql
