@@ -1,4 +1,5 @@
-### Python3:: SimpleHTTPServer
+### Python2:: SimpleHTTPServer
+### Python3:: http.server
 
 How to run from python2:
 ```
