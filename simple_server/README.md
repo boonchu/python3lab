@@ -1,7 +1,9 @@
-::Python3::
-This is SimpleHTTPServer
+### Python3:: SimpleHTTPServer
 
-how to run:
+How to run:
+```
+$ chmod +x ./server.py
 $ ./server.py
+```
 
-This default listen to port 8000
+The instance default listens to port 8000
