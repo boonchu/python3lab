@@ -54,6 +54,9 @@ postgres=> SELECT * from mydb.ticket;
 postgres=> \q
 ```
 
+##### Authentication 
+* [how to manage db authentication](http://www.postgresql.org/docs/9.2/interactive/auth-pg-hba-conf.html)
+
 Reference:
 * [psycopg postgresql database adapter](http://initd.org/psycopg/docs)
 * [wiki](https://wiki.postgresql.org/wiki/First_steps)
