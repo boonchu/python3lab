@@ -30,5 +30,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-If you concern about porting your code from 2.x to 3.x, check out this site.
+
+###### Notes:
+* If you concern about porting your code from 2.x to 3.x, check out this site.
 [porting!](http://docs.pythonsprints.com/python3_porting/py-porting.html)
+* If you want to know more what standard library on Python 3.x
+[standard library](https://docs.python.org/3.0/library/index.html)
