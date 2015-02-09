@@ -33,8 +33,9 @@ $ curl http://server1.cracker.org:8080/cgi-bin/hello
 
 ###### Test Markdown (similar to GIT markdown)
 
-* test with markdown command line on python2.x to see how it works
-  When I use GIT for awhile and I think markdown on GIT is cool. :-)
+* test with markdown command line on python2.x to see how it works.
+  When I use GIT README.md for awhile and I think markdown on GIT 
+  is cool. :-)
 ```
 $ sudo yum install python-markdown -y
 $ echo "Some **Markdown** text." | python -m markdown
