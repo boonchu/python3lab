@@ -31,9 +31,11 @@ $ curl http://server1.cracker.org:8080/cgi-bin/hello
 </html>
 ```
 
-###### Test Markdown (similar to GIT markdown)
+###### Getting started with Markdown (similar to GIT markdown)
+* idea: http://daringfireball.net/projects/markdown/basics
+* claim it faster: https://github.com/trentm/python-markdown2
 
-* test with markdown command line on python2.x to see how it works.
+* test with markdown (original module) command line on python2.x to see how it works.
 ```
 $ sudo yum install python-markdown -y
 $ echo "* When I use **GIT README.md** for awhile and I think \
@@ -62,6 +64,10 @@ $ curl http://server1.cracker.org:8080/cgi-bin/hello2.py
 </body>
 </html>
 ```
+
+###### Using Markdown with postgresql (similar to GIT markdown)
+requirement: [my instruction how to set up postgresql](https://github.com/boonchu/python3lab/tree/master/db)
+
 
 ###### security concerns
 * this simple CGI setup intend for using in development cycle only and 
