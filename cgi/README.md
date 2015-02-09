@@ -65,9 +65,66 @@ $ curl http://server1.cracker.org:8080/cgi-bin/hello2.py
 </html>
 ```
 
+###### Using Markdown with tables extensions
+extensions: https://pythonhosted.org/Markdown/extensions/index.html
+
+* create temporary table template file
+```
+$ cat /tmp/tables | python -m markdown
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+```
+* pipes them to extensions and see output
+```
+$ cat /tmp/tables | python -m markdown -x markdown.extensions.tables
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+```
+
 ###### Using Markdown with postgresql (similar to GIT markdown)
 requirement: [my instruction how to set up postgresql](https://github.com/boonchu/python3lab/tree/master/db)
 
+* create table in markdown format
+```
+content = """
+List of Ticket
+=============
+
+Section
+-------
+
+Ticket No | Ticket Title
+--------- | ------------
+"""
+
+for row in rows:
+        content += str(row[1]) + "|" + row[2] + "\n"
+
+print markdown.markdown(content, extensions=['markdown.extensions.tables'])
+```
+
+* Output will be like this
+```
+TBD (find place to host photo)
+```
 
 ###### security concerns
 * this simple CGI setup intend for using in development cycle only and 
