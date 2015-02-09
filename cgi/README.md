@@ -38,8 +38,11 @@ $ curl http://server1.cracker.org:8080/cgi-bin/hello
   is cool. :-)
 ```
 $ sudo yum install python-markdown -y
-$ echo "Some **Markdown** text." | python -m markdown
-<p>Some <strong>Markdown</strong> text.</p>
+echo "* When I use **GIT README.md** for awhile and I think \
+markdown on GIT is cool. :-)*" | python -m markdown
+<ul>
+<li>When I use <strong>GIT README.md</strong> for awhile and I think markdown on GIT
+  is cool. :-)*</li>
 ```
 * use CGI to convert markdown
 ```
