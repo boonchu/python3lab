@@ -45,6 +45,20 @@ markdown on GIT is cool. :-)*" | python -m markdown
   is cool. :-)*</li>
 ```
 * use CGI to convert markdown
+* provide markdown content for rendering
+```
+content = """
+Chapter 
+=======
+
+Section 
+-------
+
+* item 1
+* item 2
+"""
+```
+* execute from CGI
 ```
 $ curl http://server1.cracker.org:8080/cgi-bin/hello2.py
 
