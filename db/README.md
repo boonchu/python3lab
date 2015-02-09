@@ -89,6 +89,9 @@ Owned by: mydb.ticket.id
 primary key, btree, for table "mydb.ticket"
 ```
 
+##### Data presentation
+* [simple presentation through CGI](https://github.com/boonchu/python3lab/tree/master/cgi)
+
 ##### Authentication 
 * [how to manage db authentication](http://www.postgresql.org/docs/9.2/interactive/auth-pg-hba-conf.html)
 
