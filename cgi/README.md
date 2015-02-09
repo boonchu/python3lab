@@ -35,11 +35,7 @@ $ curl http://server1.cracker.org:8080/cgi-bin/hello
 * idea: http://daringfireball.net/projects/markdown/basics
 * claim it faster: https://github.com/trentm/python-markdown2
 
-<<<<<<< HEAD
-* test with markdown (original module) command line on python2.x to see how it works.
-=======
 * test with markdown command line on **python2.x** to see how it works.
->>>>>>> 590ab6de0174dba8442059b65b9bd5750ac3228b
 ```
 $ sudo yum install python-markdown -y
 $ echo "* When I use **GIT README.md** for awhile and I think \
