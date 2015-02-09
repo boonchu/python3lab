@@ -36,7 +36,7 @@ $ curl http://server1.cracker.org:8080/cgi-bin/hello
 * test with markdown command line on python2.x to see how it works.
 ```
 $ sudo yum install python-markdown -y
-echo "* When I use **GIT README.md** for awhile and I think \
+$ echo "* When I use **GIT README.md** for awhile and I think \
 markdown on GIT is cool. :-)*" | python -m markdown
 <ul>
 <li>When I use <strong>GIT README.md</strong> for awhile and I think markdown on GIT
