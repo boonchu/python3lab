@@ -135,7 +135,7 @@ print markdown.markdown(content, extensions=['markdown.extensions.tables'])
 ```
 
 * Output will be like this
-![output](https://github.com/boonchu/python3lab/blob/master/cgi/show_ticket.png)
+* ![output](https://github.com/boonchu/python3lab/blob/master/cgi/show_ticket.png)
 
 ###### security concerns
 * this simple CGI setup intend for using in development cycle only and 
