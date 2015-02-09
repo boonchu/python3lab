@@ -29,3 +29,10 @@ $ curl http://server1.cracker.org:8080/cgi-bin/hello
 </body>
 </html>
 ```
+
+###### security concerns
+* this simple CGI setup intend for using in development cycle only and 
+not design to use for live production. Your web service application may introduce
+vulnerability by XSS or SQL injections [XSS Cheatsheet](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
+* [Sanitising HTML user input](http://stackoverflow.com/questions/16861/sanitising-user-input-using-python)
+* Use web framework instead.
