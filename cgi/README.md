@@ -44,7 +44,6 @@ markdown on GIT is cool. :-)*" | python -m markdown
 <li>When I use <strong>GIT README.md</strong> for awhile and I think markdown on GIT
   is cool. :-)*</li>
 ```
-* use CGI to convert markdown
 * provide markdown content for rendering
 ```
 content = """
