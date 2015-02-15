@@ -19,4 +19,4 @@ here is output at prompt when I choose two recipes.
 "tumyum" "friedrice"
 ```
 
-![recipes](https://github.com/boonchu/python3lab/blob/master/UI/recipes.png
+![recipes](https://github.com/boonchu/python3lab/blob/master/UI/recipes.png)
