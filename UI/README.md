@@ -20,3 +20,6 @@ here is output at prompt when I choose two recipes.
 ```
 
 ![recipes](https://github.com/boonchu/python3lab/blob/master/UI/recipes.png)
+
+Referenece: 
+* http://en.wikibooks.org/wiki/Bash_Shell_Scripting/Whiptail
