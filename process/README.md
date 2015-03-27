@@ -26,3 +26,4 @@ I live in San Jose
 ```
 ###### Reference
   * http://sdiehl.github.io/gevent-tutorial/
+  * http://www.pixeldonor.com/2014/jan/10/django-gevent-and-socketio/
