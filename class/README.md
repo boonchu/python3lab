@@ -14,6 +14,9 @@ Footer
 ```
 * what is different between instant and class attribute
 ```
+-
+- http://stackoverflow.com/questions/23302018/usefulness-of-def-init-self
+-
 >>> class A(object):
 ...    def __init__(self):
 ...       self.list = []
