@@ -5,7 +5,7 @@
 * run sudo python setup.py install
 * run /usr/local/bin/hello
 
-$ /usr/local/bin/hello
-Hello world!
+$ /usr/local/bin/hello -i input -d database -v xx-xx -w yy-yy
+got input:  {'i': 'input', 'd': 'database', 'w': 'yy-yy', 'v': 'xx-xx'}
 
 ```
