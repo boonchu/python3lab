@@ -19,12 +19,13 @@ whole_second_counts = 0
 #    format(11) = 0:01.1
 #    format(321) = 0:32.1
 #    format(613) = 1:01.3
-def format(t):
-    tenths = t % 10
-    t //= 10
-    sec = t % 60
-    t //= 60
-    min = t
+def format(time):
+    # convert to .10s
+    tenths = time % 10
+    # convert to absolute seconds
+    sec = (time / 10) % 60
+    # convert to absolute minutes
+    min = ((time / 10) % 60) / 60
     return '%d:%02d.%d' % (min, sec, tenths)
 
 # define event handler for timer with 0.1 sec interval
@@ -121,5 +122,7 @@ frame.add_button('Reset', reset_time, 50)
 frame.start()
 
 # Please remember to review the grading rubric
+
+
 
 
