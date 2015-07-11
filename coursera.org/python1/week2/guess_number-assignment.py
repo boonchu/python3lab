@@ -20,7 +20,7 @@ import math
 # how_much_guess_is(1000, 0) = 10
 #
 def how_much_guess_is(high, low):
-    return int(math.ceil(math.log(high-low)/math.log(2)))
+    return int(math.ceil(math.log(high-low+1)/math.log(2)))
 
 # initalize global variables used in your code 
 # use default since it calls at start of programming code
