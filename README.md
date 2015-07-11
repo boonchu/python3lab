@@ -3,11 +3,11 @@
 Python Example : http://www.programiz.com/python-programming/examples
 
 Advance Python:
-Python Iterator:  http://www.programiz.com/python-programming/iterator
-Python Generator: (follow the link above)
-Python Closure:  
-Python Decorators:
-Python Property:
+  * Python Iterator:  http://www.programiz.com/python-programming/iterator
+  * Python Generator: (follow the link above)
+  * Python Closure:  
+  * Python Decorators:
+  * Python Property:
 
 Python3 Lab in one hour
 
