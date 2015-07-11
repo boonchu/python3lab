@@ -1,3 +1,0 @@
-###### Document links
-  * Writing Pythonic Code
-     * https://www.jeffknupp.com/writing-idiomatic-python-ebook/
