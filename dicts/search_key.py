@@ -33,3 +33,16 @@ value = '15'
 hash_items[key] = hash_items.get(key, '') + [value]
 
 print hash_items
+
+# http://stackoverflow.com/questions/17340922/how-to-search-if-dictionary-value-contains-certain-string-with-python
+def search_value(has, lookup):
+	a = []
+	for key, value in has.items():
+		for v in value:
+			if lookup in v:
+				a.append(key)
+	a = list(set(a))
+	return a
+
+# returns with key after value matched
+print search_value(hash_items, 'Mary')
