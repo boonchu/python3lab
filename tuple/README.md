@@ -1,5 +1,6 @@
 ###### Tuple - immutable list
 
+```
 >>> x, y = ( 'John', 'Doe' )
 >>> print (x, y)
 ('John', 'Doe')
@@ -14,3 +15,4 @@
 >>> t = d.items()
 >>> print t
 [('lastname', 'Doe'), ('firstname', 'John')]
+```
