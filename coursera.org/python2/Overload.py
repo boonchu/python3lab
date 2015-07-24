@@ -6,6 +6,14 @@
 # illustrated it for you previously, we could have accomplished the same idea as above 
 # with a single method definition. 
 #
+#   printData pd;
+# 
+#   // Call print to print integer
+#   pd.print(5);
+#   // Call print to print float
+#   pd.print(500.263);
+#   // Call print to print character
+#   pd.print("Hello C++");
 
 class Overload:
     def __init__(self, one, two=0):
