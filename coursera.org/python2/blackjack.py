@@ -13,7 +13,7 @@ card_images = simplegui.load_image("http://storage.googleapis.com/codeskulptor-a
 
 CARD_BACK_SIZE = (72, 96)
 CARD_BACK_CENTER = (36, 48)
-card_back = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/card_back.png")    
+card_back = simplegui.load_image("http://storage.googleapis.com/codeskulptor-assets/card_jfitz_back.png")    
 
 # initialize some useful global variables
 in_play = False
