@@ -1,5 +1,8 @@
 ###### Object Oriented in Python
 
+###### Links
+* http://www.rafekettler.com/magicmethods.html
+
 * Say Hi 
 ```
 - want to something like this: class say(hello):
