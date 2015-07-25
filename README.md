@@ -2,6 +2,9 @@
 
 Python Example : http://www.programiz.com/python-programming/examples
 
+Intermediate Python:
+  * http://www.thomas-cokelaer.info/tutorials/python/
+
 Advance Python:
   * Python Iterator:  http://www.programiz.com/python-programming/iterator
   * Python Generator: (follow the link above)
