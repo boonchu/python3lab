@@ -24,14 +24,14 @@ for email in raw_emails:
 # ** constructs dict from email data **
 email_counts = dict()
 # constructs a dictionary from email data (original)
-#for email in digest_emails:
-#	email_counts[email] = email_counts.get(email, 0) + 1
+for email in digest_emails: 
+	email_counts[email] = email_counts.get(email, 0) + 1
 
 # constructs a dictionary from email data (dictionary comprehension)
 # http://stackoverflow.com/questions/14507591/python-dictionary-comprehension
 #email_counts = { email: email_counts.get(email, 0) + 1 for email in digest_emails }
 #email_counts = dict( (email, email_counts.get(email, 0) + 1) for email in digest_emails )
-print email_counts
+#print email_counts
 
 # ** sort by values **
 # http://stackoverflow.com/questions/613183/sort-a-python-dictionary-by-value
