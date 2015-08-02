@@ -8,10 +8,9 @@ SUITS = ('C', 'S', 'H', 'D')
 
 # card sprite - 950x392
 CARD_CENTER = (36.5, 49)
-CARD_SIZE = (73, 98)
 card_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/cards.jfitz.png")
 
-
+FRAME_SIZE = (300, 200)
 
 # define card class
 class Card:
@@ -22,16 +21,16 @@ class Card:
     def draw(self, canvas, loc):
         i = RANKS.index(self.rank)
         j = SUITS.index(self.suit)
-        card_pos = [CARD_CENTER[0] + i * CARD_SIZE[0],
-                    CARD_CENTER[1] + j * CARD_SIZE[1]]
+        card_pos = [ (.5 + i) * CARD_SIZE[0],
+                     (.5 + j) * CARD_SIZE[1]]
         canvas.draw_image(card_image, card_pos, CARD_SIZE, loc, CARD_SIZE)
 
 # define draw handler        
 def draw(canvas):
-    one_card.draw(canvas, (155, 90))
+    one_card.draw(canvas, (FRAME_SIZE[0] / 2, FRAME_SIZE[1] / 2))
 
 # define frame and register draw handler
-frame = simplegui.create_frame("Card draw", 300, 200)
+frame = simplegui.create_frame("Card draw", FRAME_SIZE[0], FRAME_SIZE[1])
 frame.set_draw_handler(draw)
 
 # createa card
