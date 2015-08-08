@@ -16,3 +16,20 @@ else
     osascript -e 'display notification "Kivy.app does not exist in /Applications." with title "Kivy: Make Symlinks"'
 fi
 ```
+
+##### Testing Kivy
+
+```
+└─[$] <git:(master*)> kivy
+Python 2.7.6 (default, Sep  9 2014, 15:04:36)
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from kivy.app import App
+[INFO   ] [Logger      ] Record log in /Applications/Kivy.app/Contents/Resources/.kivy/logs/kivy_15-08-08_1.txt
+[INFO   ] [Kivy        ] v1.9.0
+[INFO   ] [Python      ] v2.7.6 (default, Sep  9 2014, 15:04:36)
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)]
+[INFO   ] [Factory     ] 173 symbols loaded
+[INFO   ] [Image       ] Providers: img_tex, img_imageio, img_dds, img_gif, img_sdl2 (img_pil, img_ffpyplayer ignored)
+>>> App().run()
+```
