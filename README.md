@@ -1,5 +1,8 @@
 ### Python3 Lab
 
+OSX user:
+brew install python
+
 Python Example : http://www.programiz.com/python-programming/examples
 
 Intermediate Python:

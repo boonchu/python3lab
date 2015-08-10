@@ -33,3 +33,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 [INFO   ] [Image       ] Providers: img_tex, img_imageio, img_dds, img_gif, img_sdl2 (img_pil, img_ffpyplayer ignored)
 >>> App().run()
 ```
+
+##### Tutorial Links
+
+* https://github.com/inclement/kivycrashcourse
+
+##### Tutorial Android
+Ref: http://python-for-android.readthedocs.org/en/latest/toolchain/#introduction
