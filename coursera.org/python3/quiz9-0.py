@@ -1,6 +1,9 @@
 #! /usr/bin/env python
 #
 # http://stackoverflow.com/questions/2572564/python-lambda-returning-none-instead-of-empty-string?rq=1
+# 
+# Write a function in Python that takes a list as input and repeatedly appends the sum of the last 
+# three elements of the list to the end of the list. Your function should loop for 25 times. 
 
 NUMBER=25
 
@@ -21,7 +24,8 @@ def appendsums(object):
         sum3(object)
 
         
-# expect value 230 from sum_tree[10]
+# expect value 230 from sum_three[10]
+# expect value 101902 from sum_three[20]
 sum_three = [0, 1, 2]
 appendsums(sum_three)
 print sum_three[10], sum_three[20]
