@@ -2,6 +2,13 @@
 
 '''
 helper function that merges a single row or column in 2048
+
+implement a function merge(line) that models the process of merging all of the tile 
+values in a single row or column. This function takes the list line as a parameter 
+and returns a new list with the tile values from line slid towards the front of the 
+list and merged. Note that you should return a new list and you should not modify 
+the input list. This is one of the more challenging parts of implementing the game. 
+
 https://class.coursera.org/principlescomputing1-004/wiki/view?page=2048_%28Merge%29
 
 Here is one basic strategy to implement the merge function:

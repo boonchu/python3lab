@@ -5,7 +5,7 @@
 # Write a function in Python that takes a list as input and repeatedly appends the sum of the last 
 # three elements of the list to the end of the list. Your function should loop for 25 times. 
 
-NUMBER=25
+NUMBER = 25
 
 sum3 = lambda x: x.append(sum(x[-3:])) if x.__len__() > 2 else x.append(x[-1])
 
