@@ -23,14 +23,17 @@ Here is one basic strategy to implement the merge function:
   Repeat step one using the list created in step two to slide the tiles to the 
   beginning of the list again.
 '''
+zero = 0
+
+def _zero_clean(x):
+    return filter(lambda a: a != 0, x)
+
 def merge(line):
     original_lenght = len(line)
-    empty_space = 0
+
+    line = _zero_clean(line)
 
     # slide all tiles towards the front by removing empty spaces (zero values)
-    while empty_space in line:
-        line.remove(empty_space)
-
     for tile in xrange(len(line)):
         # arrived at the end of list
         if tile + 1 > len(line) - 1:
@@ -39,13 +42,12 @@ def merge(line):
         if line[tile] == line[tile + 1]:
             line[tile] *= 2
             del line[tile + 1]
-            line.insert(tile + 1, empty_space)
+            line.insert(tile + 1, zero)
 
     # slide all the tiles towards the front and fill the rest with zeros
-    while empty_space in line:
-        line.remove(empty_space)
+    line = _zero_clean(line)
     while len(line) != original_lenght:
-        line.append(empty_space)
+        line.append(0)
 
     return line
 
