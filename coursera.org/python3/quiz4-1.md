@@ -5,3 +5,6 @@ Hint: review the math notes on "Functions" carefully and note the relationship b
 Enter the answer as a math expression below. To format your expression correctly, please consult this page. Remember to use the Preview button (as well as the Help link) to make sure that your expression is formatted correctly.
 
 http://tla-lotro.enjin.com/forum/m/19279343/viewthread/19888466-math-problem
+
+answer:
+y^2
