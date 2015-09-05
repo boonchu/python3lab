@@ -18,6 +18,9 @@ def exp1(x):
     return math.exp(x) ** 2
 
 def log1(x):
+    '''
+    http://stackoverflow.com/questions/15890503/valueerror-math-domain-error
+    '''
     if x > 0:
         return math.log(x, 2)
     else:
