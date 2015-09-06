@@ -15,10 +15,10 @@ def run_test(game_class):
     suite = poc_simpletest.TestSuite()
     # test the init
     game = game_class(4, 4)
-    suite.run_test(game.grid_height, 4, "Test #0: height") 
-    suite.run_test(game.grid_width, 4, "Test #1: width")
-    suite.run_test(game.grid, [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]], "Test #2: grids")
-    suite.run_test(game.reset(), [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]], "Test #2: grids")
+    suite.run_test(game.grid_height, 4, "Test #0: self.grid_height")
+    suite.run_test(game.grid_width, 4, "Test #1: self.grid_width")
+    suite.run_test(str(game.grid), str([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]), "Test #2: self.grid")
+    suite.run_test(str(game.reset()), str([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]), "Test #2: self.reset()")
 
     #test str function in twentyfortyeight
     height1 = 3

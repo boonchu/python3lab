@@ -6,7 +6,8 @@ Principle of Computing Part 1
 Boonchu Ngampairoijpibul
 """
 
-import random
+from random import randint
+
 try:
   import poc_2048_gui
 except:
@@ -75,33 +76,32 @@ class TwentyFortyEight:
         """
         __init__
         """
-
         self.grid_height = grid_height
         self.grid_width = grid_width
         self.grid = list()
         self.reset()
-        self.initial_tiles_dict = {}
 
-        # generate dictionary of initial tiles
-        # d = {1: 'a', 2: 'b', 3: 'c'}
-        #initial_tiles = {UP: [(0, 0), (0, 1), (0, 2), (0, 3)], 
-        #                 DOWN: [(3, 0), (3, 1), (3, 2), (3, 3)]}   
-        #                 LEFT: [(0, 0), (1, 0), (2, 0), (3, 0)]
-        #                 RIGHT: [(0, 3), (1, 3), (2, 3), (3, 3)]   
-        #
-        up_row = [0 for x in range(self.grid_width)]  # grid_width
-        up_col = [x for x in range(self.grid_width)]
-        down_row = [self.grid_height-1 for x in range(self.grid_width)]
-        down_col = [x for x in range(self.grid_width)]
-        left_row = [x for x in range(self.grid_height)]
-        left_col = [0 for x in range(self.grid_height)]
-        right_row = [x for x in range(self.grid_height)]
-        right_col = [self.grid_width-1 for x in range(self.grid_height)]
+        up_lst = []
+        down_lst =[]
+        right_lst =[]
+        left_lst = []
 
-        self.initial_tiles_dict = {UP: zip(up_row,up_col), 
-                        DOWN: zip(down_row,down_col),
-                        LEFT: zip(left_row, left_col),
-                        RIGHT: zip(right_row, right_col)}
+        for i in range(self.grid_width):
+            up_ele = (0,i)
+            down_ele = (self.grid_height-1, i)
+            down_lst.append(down_ele)
+        for j in range(self.grid_height):
+            right_ele = (j, self.grid_width - 1)
+            left_ele = (j, 0)
+            right_lst.append(right_ele)
+            left_lst.append(left_ele)
+
+        self.direct = {
+            UP:up_lst,
+            DOWN:down_lst,
+            RIGHT:right_lst,
+            LEFT: left_lst
+        }
 
 
     """
@@ -116,6 +116,7 @@ class TwentyFortyEight:
         Reset the game so the grid is empty except for two initial tiles.
         """
         self.grid = [[0 + 0 for col in range(self.grid_width)] for row in range(self.grid_height)]
+        return self.grid
 
     """
     __str__(self): This method should return a human readable string representing your 2048 board.
@@ -157,43 +158,73 @@ class TwentyFortyEight:
         Move all tiles in the given direction and add
         a new tile if any tiles moved.
         """
-        changed = False
-        
-        initial_tiles = self.initial_tiles_dict.get(direction)
-        #print "initial tiles", initial_tiles
-        offset = OFFSETS[direction]
+        # first create an initial list for the directions, as I have to reshape the list to match the merge fucntion
+        #then given the direction UP etc, reconstruct the list of grids
+        offsets = OFFSETS[direction]
+        starting_lst = self.direct[direction]
 
-        if direction == UP or direction == DOWN:
-            size = self.grid_height
-        elif direction == LEFT or direction == RIGHT:
-            size = self.grid_width
-         
-        for tile_index in initial_tiles: 
-            
-            tile_indices = []
-            # iterate through adding offset
-            for dummy_i in range(size):
-                tile_indices.append(tile_index)
-           
-                tile_index = [(sum(x)) for x in zip(tile_index,offset)]
-                tile_index = tuple(tile_index)
-      
-            before_merge = []
-            for tile_index in tile_indices:
-                tile = self.get_tile(tile_index[0], tile_index[1])
-                before_merge.append(tile)
-            print tile_indices
-            
-            after_merge = merge(before_merge)
-
-            
-            for tile_index, tile_value in zip(tile_indices, after_merge):
-                  if tile_value != self.get_tile(tile_index[0], tile_index[1]):
-                    self.set_tile(tile_index[0], tile_index[1], tile_value)
-                    changed = True
-     
-        if changed == True:
-            self.new_tile()
+        if direction == 1:
+            for i in range(len(starting_lst)):
+                starting_grid = starting_lst[i]
+                pos_h = starting_grid[0]
+                pos_w = starting_grid[1]
+                temp_lst = []
+                grid_pos = []
+                while pos_h < self.grid_height:
+                    grid_pos.append((pos_h, pos_w))
+                    temp_lst.append(self.grid[pos_h][pos_w])
+                    pos_h = pos_h + offsets[0]
+                    pos_w = pos_w + offsets[1]
+                merge_lst = merge(temp_lst)
+                for j in range(len(grid_pos)):
+                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
+        elif direction == 2:
+            for i in range(len(starting_lst)):
+                starting_grid = starting_lst[i]
+                pos_h = starting_grid[0]
+                pos_w = starting_grid[1]
+                temp_lst = []
+                grid_pos = []
+                while pos_h >= 0:
+                    grid_pos.append((pos_h, pos_w))
+                    temp_lst.append(self.grid[pos_h][pos_w])
+                    pos_h = pos_h + offsets[0]
+                    pos_w = pos_w + offsets[1]
+                merge_lst = merge(temp_lst)
+                for j in range(len(grid_pos)):
+                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
+                    
+        elif direction ==3:
+            for i in range(len(starting_lst)):
+                starting_grid = starting_lst[i]
+                pos_h = starting_grid[0]
+                pos_w = starting_grid[1]
+                temp_lst = []
+                grid_pos = []
+                while pos_w < self.grid_width:
+                    grid_pos.append((pos_h, pos_w))
+                    temp_lst.append(self.grid[pos_h][pos_w])
+                    pos_h = pos_h + offsets[0]
+                    pos_w = pos_w + offsets[1]
+                merge_lst = merge(temp_lst)
+                for j in range(len(grid_pos)):
+                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]   
+        else:
+            for i in range(len(starting_lst)):
+                starting_grid = starting_lst[i]
+                pos_h = starting_grid[0]
+                pos_w = starting_grid[1]
+                temp_lst = []
+                grid_pos = []
+                while pos_w >= 0:
+                    grid_pos.append((pos_h, pos_w))
+                    temp_lst.append(self.grid[pos_h][pos_w])
+                    pos_h = pos_h + offsets[0]
+                    pos_w = pos_w + offsets[1]
+                merge_lst = merge(temp_lst)
+                for j in range(len(grid_pos)):
+                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]  
+        self.new_tile()
 
     """
     new_tile(self): This method should randomly select an empty grid square (one
@@ -208,14 +239,31 @@ class TwentyFortyEight:
         """
         new_tile(self)
         """
-        zero_grid_square = list()
-        for row in range(self.grid_height):
-            for col in range(self.grid_width):
-                if self.grid[row][col] == 0:
-                    zero_grid_square.append((row, col))
 
-        rt = ramdom.choice(zero_grid_square)
-        self.grid[rt[0]][rt[1]] = random.choice([2, 2, 2, 2, 2, 2, 2, 2, 2, 4])
+        # first select the grid 
+        # then generate a value either 2 or 4
+        pos_0 = []
+        for h in range(self.grid_height):
+            for w in range(self.grid_width):
+                if self.grid[h][w] == 0:
+                    pos_0.append((h,w))
+                    
+        if len(pos_0) == 0:
+            message = 'You lose!'
+            return message
+        else:
+            high_end = len(pos_0) - 1
+            low_end = 0
+            #pos is the postion in pos_0
+            pos = pos_0[randint(low_end, high_end)]
+            #pos[0] is the height; pos[1] is the width
+            #apply it to self.grids, and find the corresponding row and col
+            #then generate a value either 2 or 4
+            decision_thres = randint(0,9)
+            if decision_thres == 9:
+                self.grid[pos[0]][pos[1]] = 4
+            else:
+                self.grid[pos[0]][pos[1]] = 2
 
     """
     set_tile(self, row, col, value): This method should set the tile at position (row,col) in
