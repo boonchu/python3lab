@@ -10,6 +10,7 @@
 # Code Owltest:
 # http://codeskulptor.appspot.com/owltest/?urlTests=poc.poc_mancala_machine.py&urlPylintConfig=poc.pylint_config.py
 #
+
 class SolitaireMancala:
     '''
     Simple class that implements Solitaire Mancala
