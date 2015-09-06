@@ -4,15 +4,15 @@
 TwentyFortyEight Game
 Principle of Computing Part 1
 Boonchu Ngampairoijpibul
-Date: 09/06/2015 
+Date: 09/06/2015
 """
 
 from random import randint
 
 try:
-  import poc_2048_gui
+    import poc_2048_gui
 except:
-  import GUI as poc_2048_gui
+    import GUI as poc_2048_gui
 
 # Directions, DO NOT MODIFY
 UP = 1
@@ -83,12 +83,12 @@ class TwentyFortyEight:
         self.reset()
 
         up_lst = []
-        down_lst =[]
-        right_lst =[]
+        down_lst = []
+        right_lst = []
         left_lst = []
 
         for i in range(self.grid_width):
-            up_ele = (0,i)
+            up_ele = (0, i)
             down_ele = (self.grid_height-1, i)
             down_lst.append(down_ele)
         for j in range(self.grid_height):
@@ -158,9 +158,10 @@ class TwentyFortyEight:
         """
         Move all tiles in the given direction and add
         a new tile if any tiles moved.
+
+        first create an initial list for the directions, as I have to reshape the list to
+        match the merge fucntion then given the direction UP etc, reconstruct the list of grids
         """
-        # first create an initial list for the directions, as I have to reshape the list to match the merge fucntion
-        #then given the direction UP etc, reconstruct the list of grids
         offsets = OFFSETS[direction]
         starting_lst = self.direct[direction]
 
@@ -194,8 +195,7 @@ class TwentyFortyEight:
                 merge_lst = merge(temp_lst)
                 for j in range(len(grid_pos)):
                     self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
-                    
-        elif direction ==3:
+        elif direction == 3:
             for i in range(len(starting_lst)):
                 starting_grid = starting_lst[i]
                 pos_h = starting_grid[0]
@@ -209,7 +209,7 @@ class TwentyFortyEight:
                     pos_w = pos_w + offsets[1]
                 merge_lst = merge(temp_lst)
                 for j in range(len(grid_pos)):
-                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]   
+                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
         else:
             for i in range(len(starting_lst)):
                 starting_grid = starting_lst[i]
@@ -224,7 +224,7 @@ class TwentyFortyEight:
                     pos_w = pos_w + offsets[1]
                 merge_lst = merge(temp_lst)
                 for j in range(len(grid_pos)):
-                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]  
+                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
         self.new_tile()
 
     """
@@ -241,14 +241,13 @@ class TwentyFortyEight:
         new_tile(self)
         """
 
-        # first select the grid 
+        # first select the grid
         # then generate a value either 2 or 4
         pos_0 = []
-        for h in range(self.grid_height):
-            for w in range(self.grid_width):
-                if self.grid[h][w] == 0:
-                    pos_0.append((h,w))
-                    
+        for height in range(self.grid_height):
+            for width in range(self.grid_width):
+                if self.grid[height][width] == 0:
+                    pos_0.append((height, width))
         if len(pos_0) == 0:
             message = 'You lose!'
             return message
@@ -260,7 +259,7 @@ class TwentyFortyEight:
             #pos[0] is the height; pos[1] is the width
             #apply it to self.grids, and find the corresponding row and col
             #then generate a value either 2 or 4
-            decision_thres = randint(0,9)
+            decision_thres = randint(0, 9)
             if decision_thres == 9:
                 self.grid[pos[0]][pos[1]] = 4
             else:
