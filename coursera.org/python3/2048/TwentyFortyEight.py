@@ -4,6 +4,7 @@
 TwentyFortyEight Game
 Principle of Computing Part 1
 Boonchu Ngampairoijpibul
+Date: 09/06/2015 
 """
 
 from random import randint
