@@ -81,14 +81,14 @@ class TwentyFortyEight:
         self.grid = list()
         self.reset()
         self.initial_tiles_dict = {}
-        
+
         # generate dictionary of initial tiles
         # d = {1: 'a', 2: 'b', 3: 'c'}
         #initial_tiles = {UP: [(0, 0), (0, 1), (0, 2), (0, 3)], 
         #                 DOWN: [(3, 0), (3, 1), (3, 2), (3, 3)]}   
         #                 LEFT: [(0, 0), (1, 0), (2, 0), (3, 0)]
         #                 RIGHT: [(0, 3), (1, 3), (2, 3), (3, 3)]   
-        #           
+        #
         up_row = [0 for x in range(self.grid_width)]  # grid_width
         up_col = [x for x in range(self.grid_width)]
         down_row = [self.grid_height-1 for x in range(self.grid_width)]
@@ -97,12 +97,12 @@ class TwentyFortyEight:
         left_col = [0 for x in range(self.grid_height)]
         right_row = [x for x in range(self.grid_height)]
         right_col = [self.grid_width-1 for x in range(self.grid_height)]
-        
+
         self.initial_tiles_dict = {UP: zip(up_row,up_col), 
                         DOWN: zip(down_row,down_col),
                         LEFT: zip(left_row, left_col),
                         RIGHT: zip(right_row, right_col)}
-                       
+
 
     """
     reset(self): This method should create a grid of height x width zeros and then use the new_tile
@@ -241,4 +241,9 @@ class TwentyFortyEight:
         """
         return self.grid[row][col]
 
-poc_2048_gui.run_gui(TwentyFortyEight(4, 4))
+import test_suite
+test = TwentyFortyEight
+test_suite.run_test(test)
+
+tfe = TwentyFortyEight(4, 4)
+poc_2048_gui.run_gui(tfe)
