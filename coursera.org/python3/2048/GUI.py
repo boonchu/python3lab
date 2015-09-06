@@ -88,10 +88,6 @@ class GUI(object):
                     val = 0
                 else:
                     val = int(math.log(tile, 2))
-                    # text = "Tile Pos: %s" % str(tile)
-                    # canvas.draw_text( text, ( 12, 32 ), 20, "black" )
-                    # canvas.draw_text( text, ( 10, 30 ), 20, "#ee5" )
-                    # print text
 
                 canvas.draw_image(self._tiles,
                     [HALF_TILE_SIZE + val * TILE_SIZE, HALF_TILE_SIZE],
@@ -99,6 +95,11 @@ class GUI(object):
                     [col * TILE_SIZE + HALF_TILE_SIZE + BORDER_SIZE,
                      row * TILE_SIZE + HALF_TILE_SIZE + BORDER_SIZE],
                     [TILE_SIZE, TILE_SIZE])
+
+        #if game._new_tile == 'You lose!':
+        #    text = 'You lose!'
+        #    canvas.draw_text( text, ( 12, 32 ), 20, "black" )
+        #    canvas.draw_text( text, ( 10, 30 ), 20, "#ee5" )
 
 
     def start(self):

@@ -88,7 +88,6 @@ class TwentyFortyEight:
         left_lst = []
 
         for i in range(self.grid_width):
-            up_ele = (0, i)
             down_ele = (self.grid_height-1, i)
             down_lst.append(down_ele)
         for j in range(self.grid_height):
@@ -101,7 +100,7 @@ class TwentyFortyEight:
             UP:up_lst,
             DOWN:down_lst,
             RIGHT:right_lst,
-            LEFT: left_lst
+            LEFT:left_lst
         }
 
 
