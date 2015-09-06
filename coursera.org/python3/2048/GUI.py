@@ -88,10 +88,10 @@ class GUI(object):
                     val = 0
                 else:
                     val = int(math.log(tile, 2))
-                    text = "Tile Pos: %s" % str(tile)
-                    canvas.draw_text( text, ( 52, 202 ), 48, "black" )
-                    canvas.draw_text( text, ( 50, 200 ), 48, "#ee5" )
-                    print text
+                    # text = "Tile Pos: %s" % str(tile)
+                    # canvas.draw_text( text, ( 12, 32 ), 20, "black" )
+                    # canvas.draw_text( text, ( 10, 30 ), 20, "#ee5" )
+                    # print text
 
                 canvas.draw_image(self._tiles,
                     [HALF_TILE_SIZE + val * TILE_SIZE, HALF_TILE_SIZE],
