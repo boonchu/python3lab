@@ -75,20 +75,31 @@ class GUI(object):
     def draw(self, canvas):
         """
         Draw handler
+        Modify the draw handler if you want
+        https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=143
         """
+        
+
         for row in range(self._rows):
             for col in range(self._cols):
                 tile = self._game.get_tile(row, col)
+
                 if tile == 0:
                     val = 0
                 else:
                     val = int(math.log(tile, 2))
+                    text = "Tile Pos: %s" % str(tile)
+                    canvas.draw_text( text, ( 52, 202 ), 48, "black" )
+                    canvas.draw_text( text, ( 50, 200 ), 48, "#ee5" )
+                    print text
+
                 canvas.draw_image(self._tiles,
                     [HALF_TILE_SIZE + val * TILE_SIZE, HALF_TILE_SIZE],
                     [TILE_SIZE, TILE_SIZE],
                     [col * TILE_SIZE + HALF_TILE_SIZE + BORDER_SIZE,
                      row * TILE_SIZE + HALF_TILE_SIZE + BORDER_SIZE],
                     [TILE_SIZE, TILE_SIZE])
+
 
     def start(self):
         """
