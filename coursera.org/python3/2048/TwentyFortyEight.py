@@ -11,7 +11,7 @@ from random import randint
 
 try:
     import poc_2048_gui
-except:
+except ImportError:
     import GUI as poc_2048_gui
 
 # Directions, DO NOT MODIFY
@@ -240,6 +240,10 @@ class TwentyFortyEight:
             #pos[0] is the height; pos[1] is the width
             #apply it to self.grids, and find the corresponding row and col
             #then generate a value either 2 or 4
+            """
+            How to make Tile Random Value follow a probability distribution?
+            https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=133
+            """
             decision_thres = randint(0, 9)
             if decision_thres == 9:
                 self.grid[pos[0]][pos[1]] = 4
@@ -274,8 +278,8 @@ try:
     import test_suite
     test = TwentyFortyEight
     test_suite.run_test(test)
-except:
-    print "no test exists"
+except ImportError:
+    print "Skipped testing"
 
 tfe = TwentyFortyEight(4, 4)
 poc_2048_gui.run_gui(tfe)

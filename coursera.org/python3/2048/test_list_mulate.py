@@ -9,10 +9,11 @@ def double_value(x):
   x[:] = [i * 2 for i in x]
 
 def remove_zero(x):
-  return [x.pop(0) for _ in range(len(x))]
+  # return [x.pop(0) for _ in range(len(x))]
+  return [i for i in x if i]
 
-#double_value(test_list)
-#print test_list
+double_value(test_list)
+print test_list
 
 list2 = set()
 list2 = remove_zero(test_list)

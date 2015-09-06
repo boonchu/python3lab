@@ -2,40 +2,49 @@
 """
 A simple testing suite for 2048 game
 Note that tests are not exhaustive and should be supplemented
-"""
 
+Discussion: Error owl test unit test failure in move __str__ return different
+https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=125
+"""
 import poc_simpletest
+
+# Directions, DO NOT MODIFY
+UP = 1
+DOWN = 2
+LEFT = 3
+RIGHT = 4
+
 
 def run_test(game_class):
     """
-    Some informal testing code
+    run test
     """
-
-    # create a TestSuite object
     suite = poc_simpletest.TestSuite()
+
+    obj = game_class(4, 4)
+    obj.set_tile(0, 0, 2)
+    obj.set_tile(0, 1, 0)
+    obj.set_tile(0, 2, 0)
+    obj.set_tile(0, 3, 0)
+    obj.set_tile(1, 0, 0)
+    obj.set_tile(1, 1, 2)
+    obj.set_tile(1, 2, 0)
+    obj.set_tile(1, 3, 0)
+    obj.set_tile(2, 0, 0)
+    obj.set_tile(2, 1, 0)
+    obj.set_tile(2, 2, 2)
+    obj.set_tile(2, 3, 0)
+    obj.set_tile(3, 3, 0)
+    obj.set_tile(3, 1, 0)
+    obj.set_tile(3, 2, 0)
+    obj.set_tile(3, 3, 2)
+    obj.move(UP)
+    suite.run_test(str(obj), '[[2, 2, 2, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]', 'Test #1: obj.set_tile() ')
+
     # test the init
-    game = game_class(4, 4)
-    suite.run_test(game.grid_height, 4, "Test #0: self.grid_height")
-    suite.run_test(game.grid_width, 4, "Test #1: self.grid_width")
-    suite.run_test(str(game.grid), str([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]), "Test #2: self.grid")
-    suite.run_test(str(game.reset()), str([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]), "Test #2: self.reset()")
-
-    #test str function in twentyfortyeight
-    height1 = 3
-    width1 = 4
-    game1 = game_class(3, 4)
-    suite.run_test(str(game1), '[[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]', 'Test #3: str function')
-
-    #test setting tiles and get tile in the class
-    h2 = 4
-    w2 = 5
-    game2 = game_class(4, 5)
-    game2.set_tile(1,1,99)
-    game2.set_tile(1,3,40)
-    game2.set_tile(3,4, 21)
-    suite.run_test(game2.get_tile(0,0), 0, 'Test #4: expect 0')
-    suite.run_test(game2.get_tile(1,1), 99, 'Test #5:expect 99')
-    suite.run_test(game2.get_tile(1,3), 40, 'Test #6:expect 40')
-    suite.run_test(game2.get_tile(3,4), 21, 'Test #7:expect 21')
+    obj = game_class(2, 2)
+    suite.run_test(obj.grid_height, 2, "Test #0: self.grid_height")
+    suite.run_test(obj.grid_width, 2, "Test #1: self.grid_width")
+    suite.run_test(str(obj.reset()), str([[0, 0], [0, 0]]), "Test #2: self.reset()")
 
     suite.report_results()
