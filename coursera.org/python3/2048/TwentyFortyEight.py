@@ -164,66 +164,48 @@ class TwentyFortyEight:
         offsets = OFFSETS[direction]
         starting_lst = self.direct[direction]
 
-        if direction == 1:
-            for i in range(len(starting_lst)):
-                starting_grid = starting_lst[i]
-                pos_h = starting_grid[0]
-                pos_w = starting_grid[1]
-                temp_lst = []
-                grid_pos = []
-                while pos_h < self.grid_height:
-                    grid_pos.append((pos_h, pos_w))
-                    temp_lst.append(self.grid[pos_h][pos_w])
-                    pos_h = pos_h + offsets[0]
-                    pos_w = pos_w + offsets[1]
-                merge_lst = merge(temp_lst)
-                for j in range(len(grid_pos)):
-                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
-        elif direction == 2:
-            for i in range(len(starting_lst)):
-                starting_grid = starting_lst[i]
-                pos_h = starting_grid[0]
-                pos_w = starting_grid[1]
-                temp_lst = []
-                grid_pos = []
-                while pos_h >= 0:
-                    grid_pos.append((pos_h, pos_w))
-                    temp_lst.append(self.grid[pos_h][pos_w])
-                    pos_h = pos_h + offsets[0]
-                    pos_w = pos_w + offsets[1]
-                merge_lst = merge(temp_lst)
-                for j in range(len(grid_pos)):
-                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
-        elif direction == 3:
-            for i in range(len(starting_lst)):
-                starting_grid = starting_lst[i]
-                pos_h = starting_grid[0]
-                pos_w = starting_grid[1]
-                temp_lst = []
-                grid_pos = []
-                while pos_w < self.grid_width:
-                    grid_pos.append((pos_h, pos_w))
-                    temp_lst.append(self.grid[pos_h][pos_w])
-                    pos_h = pos_h + offsets[0]
-                    pos_w = pos_w + offsets[1]
-                merge_lst = merge(temp_lst)
-                for j in range(len(grid_pos)):
-                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
-        else:
-            for i in range(len(starting_lst)):
-                starting_grid = starting_lst[i]
-                pos_h = starting_grid[0]
-                pos_w = starting_grid[1]
-                temp_lst = []
-                grid_pos = []
-                while pos_w >= 0:
-                    grid_pos.append((pos_h, pos_w))
-                    temp_lst.append(self.grid[pos_h][pos_w])
-                    pos_h = pos_h + offsets[0]
-                    pos_w = pos_w + offsets[1]
-                merge_lst = merge(temp_lst)
-                for j in range(len(grid_pos)):
-                    self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
+        for i in range(len(starting_lst)):
+          starting_grid = starting_lst[i]
+          pos_h = starting_grid[0]
+          pos_w = starting_grid[1]
+          temp_lst = []
+          grid_pos = []
+          if direction == 1:
+            while pos_h < self.grid_height:
+                grid_pos.append((pos_h, pos_w))
+                temp_lst.append(self.grid[pos_h][pos_w])
+                pos_h = pos_h + offsets[0]
+                pos_w = pos_w + offsets[1]
+            merge_lst = merge(temp_lst)
+            for j in range(len(grid_pos)):
+                self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
+          elif direction == 2:
+            while pos_h >= 0:
+                grid_pos.append((pos_h, pos_w))
+                temp_lst.append(self.grid[pos_h][pos_w])
+                pos_h = pos_h + offsets[0]
+                pos_w = pos_w + offsets[1]
+            merge_lst = merge(temp_lst)
+            for j in range(len(grid_pos)):
+                self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
+          elif direction == 3:
+            while pos_w < self.grid_width:
+                grid_pos.append((pos_h, pos_w))
+                temp_lst.append(self.grid[pos_h][pos_w])
+                pos_h = pos_h + offsets[0]
+                pos_w = pos_w + offsets[1]
+            merge_lst = merge(temp_lst)
+            for j in range(len(grid_pos)):
+                self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
+          else:
+            while pos_w >= 0:
+                grid_pos.append((pos_h, pos_w))
+                temp_lst.append(self.grid[pos_h][pos_w])
+                pos_h = pos_h + offsets[0]
+                pos_w = pos_w + offsets[1]
+            merge_lst = merge(temp_lst)
+            for j in range(len(grid_pos)):
+                self.grid[grid_pos[j][0]][grid_pos[j][1]] = merge_lst[j]
         self.new_tile()
 
     """
@@ -288,9 +270,12 @@ class TwentyFortyEight:
         """
         return self.grid[row][col]
 
-import test_suite
-test = TwentyFortyEight
-test_suite.run_test(test)
+try:
+    import test_suite
+    test = TwentyFortyEight
+    test_suite.run_test(test)
+except:
+    print "no test exists"
 
 tfe = TwentyFortyEight(4, 4)
 poc_2048_gui.run_gui(tfe)
