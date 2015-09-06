@@ -7,6 +7,8 @@ Note that code is designed to be much simpler than unittest
 and does NOT replicate unittest functionality
 """
 
+import sys
+
 class TestSuite:
     """
     Create a suite of tests similar to unittest
@@ -38,3 +40,6 @@ class TestSuite:
         msg = "Ran " + str(self.total_tests) + " tests. "
         msg += str(self.failures) + " failures."
         print msg
+
+        if self.failures > 0:
+            sys.exit(1)

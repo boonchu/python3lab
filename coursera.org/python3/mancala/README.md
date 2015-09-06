@@ -13,3 +13,10 @@ import SolitaireMancala
 >>> SolitaireMancala
 <class SolitaireMancala.SolitaireMancala at 0x10e20cb48>
 ```
+
+###### Use testing suite with Solitaire Mancala
+
+```
+$ ./poc_mancala_testsuite.py
+Ran 19 tests. 0 failures.
+```
