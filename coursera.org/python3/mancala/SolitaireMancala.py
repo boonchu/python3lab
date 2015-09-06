@@ -99,4 +99,4 @@ def test_mancala():
     print "Testing get_num_seeds - Computed:", my_game.get_num_seeds(3), "Expected:", config1[3]
     print "Testing get_num_seeds - Computed:", my_game.get_num_seeds(5), "Expected:", config1[5]
 
-test_mancala()
+# test_mancala()

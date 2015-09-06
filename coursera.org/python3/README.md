@@ -18,5 +18,22 @@ python setup.py -v build
 python setup.py -v install
 ```
 
+###### SimpleGUI
+   * Use instruction from SimplePlot
+   * Update simplegui
+        - https://bitbucket.org/OPiMedia/simpleguics2pygame
+
+```
+pip install SimpleGUICS2Pygame
+```
+
+###### Verification
+
+```
+$ pip list --local | grep -i simple
+SimpleGUICS2Pygame (01.09.00)
+SimpleGUITk (1.1.3)
+```
+
 ###### using matplotlib
   * https://www.udacity.com/wiki/plotting-graphs-with-python
