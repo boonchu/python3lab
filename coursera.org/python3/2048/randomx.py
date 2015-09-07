@@ -16,3 +16,24 @@ def two_or_four():
         return [ random.choice(two_and_fours) for _ in range(10) ]
 
 print two_or_four()
+
+def multiple_trials(trials):
+    trial_count = 0
+    two_count = 0
+    while True:
+      sample = two_or_four()
+      two_count += sample.count(2)
+      trial_count += 1
+      if trial_count == trials:
+        print "Percentage of 2s with ",trials, "trials: ", two_count/(trial_count*10.)
+        break
+
+multiple_trials(1)
+multiple_trials(1)
+multiple_trials(1)
+multiple_trials(1)
+print
+multiple_trials(10000)
+multiple_trials(10000)
+multiple_trials(10000)
+multiple_trials(10000)

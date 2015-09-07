@@ -27,8 +27,8 @@ class TestSuite:
         """
         self.total_tests += 1
         if computed != expected:
-            msg = message + " Computed: " + str(computed)
-            msg += " Expected: " + str(expected)
+            msg = message + "\nComputed: len=" + str(len(str(computed))) + " **" + str(computed) + "**"
+            msg += "\nExpected: len=" + str(len(str(expected))) + " **" + str(expected) + "**"
             print msg
             self.failures += 1
 

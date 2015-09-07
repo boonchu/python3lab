@@ -21,6 +21,13 @@ def run_test(game_class):
     """
     suite = poc_simpletest.TestSuite()
 
+    # test the init
+    obj = game_class(2, 2)
+    obj.reset()
+    suite.run_test(obj._grid_height, 2, "Test #0: obj.grid_height")
+    suite.run_test(obj._grid_width, 2, "Test #1: obj.grid_width")
+    suite.run_test(obj, "[[0, 0]\n [0, 0]]", "Test #1: obj.reset()")
+
     obj = game_class(4, 4)
     obj.set_tile(0, 0, 2)
     obj.set_tile(0, 1, 0)
@@ -39,12 +46,6 @@ def run_test(game_class):
     obj.set_tile(3, 2, 0)
     obj.set_tile(3, 3, 2)
     obj.move(UP)
-    suite.run_test(str(obj), '[[2, 2, 2, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]', 'Test #1: obj.set_tile() ')
-
-    # test the init
-    obj = game_class(2, 2)
-    suite.run_test(obj.grid_height, 2, "Test #0: self.grid_height")
-    suite.run_test(obj.grid_width, 2, "Test #1: self.grid_width")
-    suite.run_test(str(obj.reset()), str([[0, 0], [0, 0]]), "Test #2: self.reset()")
+    suite.run_test(str(obj), '[[2, 2, 2, 2], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]', 'Test #2: obj.set_tile() ')
 
     suite.report_results()
