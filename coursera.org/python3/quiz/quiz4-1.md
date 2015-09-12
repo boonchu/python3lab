@@ -46,8 +46,8 @@ explode(log2(y))=...
 ```
 
 Thread Discussion:
-https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=126
-http://tla-lotro.enjin.com/forum/m/19279343/viewthread/19888466-math-problem
+ * https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=126
+ * http://tla-lotro.enjin.com/forum/m/19279343/viewthread/19888466-math-problem
 
 ```
 y = (2^y)^2
