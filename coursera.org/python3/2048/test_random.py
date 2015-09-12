@@ -2,6 +2,8 @@
 #
 # https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=133
 #
+# https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=148
+#
 # The tile should be 2 90% of the time and 4 10% of the time.
 
 import random

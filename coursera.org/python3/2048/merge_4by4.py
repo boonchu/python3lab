@@ -63,7 +63,7 @@ def merge(line):
     lst = _zero_clean(lst)
 
     return lst + (len(line)-len(lst))*[0]
-   
+
 
 def get_grid(list):
     return str([row for row in aList]).replace("],", "]\n")

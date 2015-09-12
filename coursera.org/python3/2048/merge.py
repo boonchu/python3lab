@@ -90,7 +90,46 @@ def merge_v2(line):
     lst = _zero_clean(lst)
 
     return lst + (len(line)-len(lst))*[0]
-    
+
+def merge_v3(line):
+    """
+    Function that merges a single row or column in 2048.
+    """
+    lst = [0] * len(line) # we start with a 0-filled list.
+    pos = 0     # index position in the new list
+    pvl = 0     # we keep the previous value
+    for val in line:
+        if val: # we only care about the non zero values.
+            if not pvl:        # this tile is empty
+                lst[pos] = val # let's fill with val
+                pvl = val
+            elif pvl - val:    # different non zero values?
+                pos += 1
+                lst[pos] = val # tiles don't merge
+                pvl = val
+            else:              # same values!
+                lst[pos] = val << 1  # it merges!
+                pos += 1
+                pvl = 0        # next value is 0
+    return lst
+
+def merge_v4(line):
+    merged = [0] * len(line)
+    idx = 0
+    for num in line:
+        if num:
+            if num == merged[idx]:
+                merged[idx] *= 2
+                idx += 1
+            else:
+                if merged[idx]:
+                    idx += 1
+                merged[idx] = num
+    return merged
+
+def merge_v5(line):
+    _merge = lambda m:(filter(int,reduce(lambda x,y:x+[y]*(y>0)if x[-1]-y else x[:-1]+[y*2,0],m,[0]))+[0]*len(m))[:len(m)]
+    return _merge(line)
 
 def test_merge_v1():
     '''
@@ -127,5 +166,29 @@ def test_merge_v2():
     print '  [2, 2, 2, 2, 2] should return [4, 4, 2, 0, 0] ->', merge_v2([2, 2, 2, 2, 2])
     print '  [8, 16, 16, 8] should return [8, 32, 8, 0] ->', merge_v2([8, 16, 16, 8])
 
+def test_merge_v3():
+    print '  [2, 0, 2, 4] should return [4, 4, 0, 0] -> ', merge_v3([2, 0, 2, 4])
+    print '  [0, 0, 2, 2] should return [4, 0, 0, 0] ->', merge_v3([0, 0, 2, 2])
+    print '  [2, 2, 0, 0] should return [4, 0, 0, 0] ->', merge_v3([2, 2, 0, 0])
+    print '  [2, 2, 2, 2, 2] should return [4, 4, 2, 0, 0] ->', merge_v3([2, 2, 2, 2, 2])
+    print '  [8, 16, 16, 8] should return [8, 32, 8, 0] ->', merge_v3([8, 16, 16, 8])
+
+def test_merge_v4():
+    print '  [2, 0, 2, 4] should return [4, 4, 0, 0] -> ', merge_v4([2, 0, 2, 4])
+    print '  [0, 0, 2, 2] should return [4, 0, 0, 0] ->', merge_v4([0, 0, 2, 2])
+    print '  [2, 2, 0, 0] should return [4, 0, 0, 0] ->', merge_v4([2, 2, 0, 0])
+    print '  [2, 2, 2, 2, 2] should return [4, 4, 2, 0, 0] ->', merge_v4([2, 2, 2, 2, 2])
+    print '  [8, 16, 16, 8] should return [8, 32, 8, 0] ->', merge_v4([8, 16, 16, 8])
+
+def test_merge_v5():
+    print '  [2, 0, 2, 4] should return [4, 4, 0, 0] -> ', merge_v5([2, 0, 2, 4])
+    print '  [0, 0, 2, 2] should return [4, 0, 0, 0] ->', merge_v5([0, 0, 2, 2])
+    print '  [2, 2, 0, 0] should return [4, 0, 0, 0] ->', merge_v5([2, 2, 0, 0])
+    print '  [2, 2, 2, 2, 2] should return [4, 4, 2, 0, 0] ->', merge_v5([2, 2, 2, 2, 2])
+    print '  [8, 16, 16, 8] should return [8, 32, 8, 0] ->', merge_v5([8, 16, 16, 8])
+
 #test_merge_v1()
-test_merge_v2()
+#test_merge_v2()
+#test_merge_v3()
+#test_merge_v4()
+test_merge_v5()
