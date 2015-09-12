@@ -19,12 +19,44 @@ python setup.py -v install
 ```
 
 ###### SimpleGUI
+   * Document link
+        - http://simpleguics2pygame.readthedocs.org/en/latest/simpleplot.html
    * Use instruction from SimplePlot
    * Update simplegui
         - https://bitbucket.org/OPiMedia/simpleguics2pygame
+   * Verify script
 
 ```
-pip install SimpleGUICS2Pygame
+> $ pip install SimpleGUICS2Pygame
+```
+
+```
+> $ SimpleGUICS2Pygame_check.py
+script/SimpleGUICS2Pygame_check.py (April 21, 2014)
+===================================================
+python - version 2.7.8 (default, Aug  8 2015, 11:56:52)
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.56)]
+
+
+import matplotlib ok - Version 1.4.3
+
+
+import pygame ok - Version 1.9.2a0
+pygame.init() 6 modules loaded ok
+
+
+import SimpleGUICS2Pygame ok - Version 01.09.00
+
+import SimpleGUICS2Pygame.codeskulptor ok
+import SimpleGUICS2Pygame.codeskulptor_lib ok
+import SimpleGUICS2Pygame.numeric ok
+import SimpleGUICS2Pygame.simplegui_lib ok
+import SimpleGUICS2Pygame.simplegui_lib_draw ok
+import SimpleGUICS2Pygame.simplegui_lib_fps ok
+import SimpleGUICS2Pygame.simplegui_lib_keys ok
+import SimpleGUICS2Pygame.simplegui_lib_loader ok
+import SimpleGUICS2Pygame.simpleguics2pygame ok
+import SimpleGUICS2Pygame.simpleplot ok
 ```
 
 ###### Verification
