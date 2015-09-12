@@ -355,6 +355,7 @@ def here_we_go():
         timings[func] = (time.time() - start) / SAMPLE_SIZE
 
     for func, tim in sorted(timings.items(), key=lambda x: x[1], reverse = True):
-        print '{time:%fs} <- {%s}' % (tim, functions[func])
+        print '{time:%.10fs} <- {%s}' % (tim, functions[func])
+
 
 here_we_go() 
