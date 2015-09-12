@@ -3,6 +3,9 @@
     - https://class.coursera.org/principlescomputing1-004/wiki/view?page=2048_%28Merge%29
     - https://class.coursera.org/principlescomputing1-004/wiki/view?page=2048
 
+  * [Tic Tac Toe]
+    - https://class.coursera.org/principlescomputing1-004/wiki/view?page=tictactoemc
+
 ###### SimplePlot
   * https://pypi.python.org/pypi/SimpleGUITk
   * http://stackoverflow.com/questions/18280436/importerror-matplotlib-requires-dateutil

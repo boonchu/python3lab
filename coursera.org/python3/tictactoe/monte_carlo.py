@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+
 """
 Monte Carlo simulation to compute the expectation that 
 you will get three-of-a-kind when rolling 5 dice.
@@ -7,8 +8,8 @@ you will get three-of-a-kind when rolling 5 dice.
 import random
 import math
 import simpleplot
-#import codeskulptor
-#codeskulptor.set_timeout(30)
+# import codeskulptor
+# codeskulptor.set_timeout(30)
 
 def compute_trial():
     """
@@ -54,7 +55,7 @@ def run():
 
     Actual probability of 3-of-a-kind: .1929
     """
-    trial_sizes = [10, 100, 1000, 10000, 100000]
+    trial_sizes = [10, 100, 1000, 10000, 100000, 200000, 300000, 400000, 500000, 600000, 700000, 800000, 900000]
     estimates = []
     for ntrials in trial_sizes:
         estimates.append((ntrials, monte_carlo(ntrials)))
@@ -63,6 +64,8 @@ def run():
 
     log_estimates = [(math.log(ntrials, 10), est)
                      for ntrials, est in estimates]
-    simpleplot.plot_bars("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates])
+    #simpleplot.plot_bars("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates])
+    simpleplot.plot_lines("3-of-a-Kind", 600, 400, "Log(Trials)", "Expectation", [log_estimates],
+                    False, ["log_estimates"])
 
 run()
