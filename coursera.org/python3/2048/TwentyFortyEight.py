@@ -158,6 +158,50 @@ class TwentyFortyEight:
         """
         return self._grid_width
 
+    def traverse_grid(self, direction):
+        """
+        https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=250
+
+        Hint:
+        - Use traverse_grid from the video to get indices from the grid. So you will have a list where
+        the content is INDICES where the merge would occur. Use this list to form a new list as a parameter
+        to merge to get a merged list. Use it back to remap the result.
+
+        - For starting cells, here are some advice:
+            ----  for UP direction, the starting cell would be the topmost row (fixed row, coloumn varied)
+            ----  for DOWN, the starting cell would be lowest row (fixed row, coloumn varied)
+            ----  for LEFT, the starting cell would the the leftmost coloumn (varied row, fixed coloumn)
+            ----  for RIGHT, the starting cell would be the rightmost coloumn (varied row, fixed coloumn)
+
+        Add an if statement to check what the direction is and adjust the number you iterate over. In code
+        it will look like this:
+
+       if direction == "UP":
+            indx = self.up_indices
+            dist = self.grid_height
+        elif direction == "DOWN":
+            indx = self.down_indices
+            dist = self.grid_height
+        elif direction == "LEFT":
+            indx = self.left_indices
+            dist = self.grid_width
+        else: 
+            indx = self.right_indices
+            dist = self.grid_width
+
+        for each in indx:
+            temp = []
+            for num in range(dist):
+                row = each[0] + OFFSETS[UP][0] * num
+                col = each[1] + OFFSETS[UP][1] * num
+                print (row, col)
+                temp.append(self.grid[row][col])
+                merge(temp)
+
+        see: https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=235
+        """
+        pass
+
     def move(self, direction):
         """
         Move all tiles in the given direction and add
@@ -165,7 +209,8 @@ class TwentyFortyEight:
         first create an initial list for the directions, as I have to reshape the list to
         match the merge fucntion then given the direction UP etc, reconstruct the list of grids
         """
-        saved_grid = self._grid
+        #saved_grid = self._grid
+        saved_grid = self.__str__()
         if direction == UP:
 
             # 90 degrees clockwise
@@ -207,7 +252,9 @@ class TwentyFortyEight:
             # print self._grid
         else:
             self._grid = [ merge(row) for row in self._grid ]
+
             # print self._grid
+
             
         # https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=208
         # Basically you add a tile each time you press one of the arrow keys. In terms of
@@ -223,7 +270,13 @@ class TwentyFortyEight:
         # done if there's change on the board.
         # 
         # Cannot generate a new tile as long as there is not tile that is moving.
-        if not cmp_list(saved_grid, self._grid):
+        #
+        # use __str__() instead
+        # https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=250
+        # 
+        # retire the array comparison
+        #if not cmp_list(saved_grid, self._grid):
+        if self.__str__() != saved_grid:
             self.new_tile()
 
     def new_tile(self):
