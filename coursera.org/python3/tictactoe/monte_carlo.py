@@ -62,10 +62,8 @@ def run():
     for ntrials, est in estimates:
         print ntrials, ":", est
 
-    log_estimates = [(math.log(ntrials, 10), est)
-                     for ntrials, est in estimates]
-    #simpleplot.plot_bars("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates])
-    simpleplot.plot_lines("3-of-a-Kind", 600, 400, "Log(Trials)", "Expectation", [log_estimates],
-                    False, ["log_estimates"])
+    log_estimates = [(math.log(ntrials, 10), est) for ntrials, est in estimates]
+    simpleplot.plot_bars("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates])
+    #simpleplot.plot_lines("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates], False, ["log_estimates"])
 
 run()

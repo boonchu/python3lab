@@ -6,6 +6,9 @@
   * [Tic Tac Toe]
     - https://class.coursera.org/principlescomputing1-004/wiki/view?page=tictactoemc
 
+  * Expected Value
+    - http://www.stat.ucla.edu/~cochran/stat10/winter/lectures/lect8.html
+
 ###### SimplePlot
   * https://pypi.python.org/pypi/SimpleGUITk
   * http://stackoverflow.com/questions/18280436/importerror-matplotlib-requires-dateutil
