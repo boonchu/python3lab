@@ -31,10 +31,9 @@ def estimate_mystery(num_trials):
 def run():
     """
     Run Monte Carlo simulations with different numbers
-    of trials to estimate the expectation that you will
-    get 3-of-a-kind when rolling 5 dice.
+    of trials to estimate the mystery constant floating number.
 
-    Actual probability of 3-of-a-kind: .1929
+    Guess what? It relates to Geometry. Search from math.pi()
     """
     trial_sizes = [
         10, 100, 1000, 10000, 20000, 30000, 40000, 50000, 60000,
