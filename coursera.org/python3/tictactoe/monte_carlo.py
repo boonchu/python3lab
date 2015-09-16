@@ -8,8 +8,13 @@ you will get three-of-a-kind when rolling 5 dice.
 import random
 import math
 import simpleplot
-# import codeskulptor
-# codeskulptor.set_timeout(30)
+
+try:
+  import SimpleGUICS2Pygame.codeskulptor as codeskulptor
+except ImportError:
+  import codeskulptor
+
+codeskulptor.set_timeout(20)
 
 def compute_trial():
     """
@@ -63,7 +68,7 @@ def run():
         print ntrials, ":", est
 
     log_estimates = [(math.log(ntrials, 10), est) for ntrials, est in estimates]
-    simpleplot.plot_bars("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates])
-    #simpleplot.plot_lines("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates], False, ["log_estimates"])
+    #simpleplot.plot_bars("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates])
+    simpleplot.plot_lines("3-of-a-Kind", 400, 300, "Log(Trials)", "Expectation", [log_estimates], False, ["log_estimates"])
 
 run()

@@ -103,14 +103,12 @@ class TTTBoard:
         lines.extend(board)
 
         # cols
-        cols = [[board[rowidx][colidx] for rowidx in dimrng]
-                for colidx in dimrng]
+        cols = [[board[rowidx][colidx] for rowidx in dimrng] for colidx in dimrng]
         lines.extend(cols)
 
         # diags
         diag1 = [board[idx][idx] for idx in dimrng]
-        diag2 = [board[idx][dim - idx -1] 
-                 for idx in dimrng]
+        diag2 = [board[idx][dim - idx -1] for idx in dimrng]
         lines.append(diag1)
         lines.append(diag2)
 

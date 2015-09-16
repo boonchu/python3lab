@@ -88,7 +88,6 @@ def test_mancala():
     """
     Test code for Solitaire Mancala
     """
-
     my_game = SolitaireMancala()
     print "Testing init - Computed:", my_game, "Expected: [0]"
 

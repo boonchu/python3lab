@@ -1,4 +1,4 @@
-Consider the mathematical 
+#### Consider the mathematical 
 
 ```
 function explode(x)= ( 2 ** x ) ** 2 or (2 ^ x) ^ 2
@@ -23,6 +23,7 @@ use the Preview button (as well as the Help link) to make sure
 that your expression is formatted correctly.
 
 answer:
+  - https://class.coursera.org/principlescomputing1-004/wiki/view?page=functions
 
 ```
 y^2

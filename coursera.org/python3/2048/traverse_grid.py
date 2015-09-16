@@ -56,6 +56,38 @@ OFFSETS = {UP: (1, 0),
 initial_tiles = {}
 grid = []
 
+"""
+https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=393
+
+What is happening is that you are defining a dictionary key and value pair like this:
+
+dict[UP] = something
+
+UP is a global variable that is set to 1, so this is the equivalent of saying:
+
+dict[1] = something
+
+and that's fine. Look at the OFFSETS dictionary (top of your 2048 module) and you 
+will see it uses the same keys. This makes it easy in your move() method because all 
+you need to do access the dictionary values with the supplied direction parameter that 
+is passed into move(). 
+
+Since direction must be UP (1), DOWN (2), LEFT (3) or RIGHT (4), you can just use 
+direction as a key to your dictionary and the appropriate initial tile tuples list will 
+be accessed.
+
+Sure, if you used strings ( 'UP' ) for the keys, you could make it work:
+
+if direction == UP:
+ #do something with self._initial_tiles['UP']
+ if direction == DOWN:
+   #do something with self._initial_tiles['DOWN']
+
+   But that is a lot more work and unnecessarily complex when you can do this instead:
+
+   #do something with self._initial_tiles[direction]
+"""
+
 def set_tiles(width, height):
     """ 
     1. initializes all tiles (columns x rows)
@@ -76,11 +108,34 @@ def set_tiles(width, height):
         tiles[RIGHT].append([row, width-1])
     return tiles
 
-def set_grid(width, height):
-    return [[random.choice([0, 2, 4]) for col in range(width)] for row in range(height)]
+def set_grid(_width, _height):
+    return [[random.choice([0, 2, 4]) for col in range(_width)] for row in range(_height)]
 
 def dump_grid(_grid):
     return str([x for x in _grid]).replace("],", "]\n")
+
+def dump_grid2(_grid, _width, _height):
+    """
+    Return a string representation of the grid for debugging.
+    """
+    # tile_width is number of digits in largest number in the grid.
+    tile_width = len(str(max(map(max, _grid))))
+    horizontal_border = '+' + ('-' * (tile_width + 2) + '+') * _width
+    row_separator = '|' + ('-' * (tile_width + 2) + '|') * _width
+    result = horizontal_border + '\n'
+
+    for row in range(_height):
+      row_string = '|'
+      for col in range(_width):
+        value = _grid[row][col]
+        row_string += ' ' + str(value).center(tile_width) + ' |'
+      result += row_string + '\n'
+      if row < _height - 1:
+        result += row_separator + '\n'
+      else:
+        result += horizontal_border + '\n'
+
+    return result
 
 def merge(line):
     _merge = lambda m:(filter(int,reduce(lambda x,y:x+[y]*(y>0)if x[-1]-y else x[:-1]+[y*2,0],m,[0]))+[0]*len(m))[:len(m)]
@@ -120,25 +175,25 @@ initial_tiles = set_tiles(grid_width, grid_height)
 
 print "** starting new grid **"
 grid = set_grid(grid_width, grid_height)
-print dump_grid(grid)
+print dump_grid2(grid, grid_width, grid_height)
 print
 
 move(UP)
 print "** UP **"
-print dump_grid(grid)
+print dump_grid2(grid, grid_width, grid_height)
 print
 
 move(DOWN)
 print "** DOWN **"
-print dump_grid(grid)
+print dump_grid2(grid, grid_width, grid_height)
 print
 
 move(LEFT)
 print "** LEFT **"
-print dump_grid(grid)
+print dump_grid2(grid, grid_width, grid_height)
 print
 
 move(RIGHT)
 print "** RIGHT **"
-print dump_grid(grid)
+print dump_grid2(grid, grid_width, grid_height)
 print

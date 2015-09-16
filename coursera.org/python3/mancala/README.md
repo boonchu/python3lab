@@ -1,3 +1,6 @@
+###### Mancala
+    - https://class.coursera.org/principlescomputing1-004/wiki/view?page=mancala
+
 ###### How to import custom modules in python
     - https://class.coursera.org/principlescomputing1-004/wiki/view?page=imports
 

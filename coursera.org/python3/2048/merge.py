@@ -131,6 +131,18 @@ def merge_v5(line):
     _merge = lambda m:(filter(int,reduce(lambda x,y:x+[y]*(y>0)if x[-1]-y else x[:-1]+[y*2,0],m,[0]))+[0]*len(m))[:len(m)]
     return _merge(line)
 
+def merge_v6(line):
+    """
+    Function that merges a single row or column in 2048.
+    """
+    new = [num for num in line if num]
+    idx = 0
+    while idx < len(new) - 1:
+        if new[idx] == new[idx + 1]:
+            new[idx] += new.pop(idx + 1)
+        idx += 1
+    return new + [0] * (len(line) - len(new))
+
 def test_merge_v1():
     '''
     few simple tests
@@ -187,8 +199,16 @@ def test_merge_v5():
     print '  [2, 2, 2, 2, 2] should return [4, 4, 2, 0, 0] ->', merge_v5([2, 2, 2, 2, 2])
     print '  [8, 16, 16, 8] should return [8, 32, 8, 0] ->', merge_v5([8, 16, 16, 8])
 
+def test_merge_v6():
+    print '  [2, 0, 2, 4] should return [4, 4, 0, 0] -> ', merge_v6([2, 0, 2, 4])
+    print '  [0, 0, 2, 2] should return [4, 0, 0, 0] ->', merge_v6([0, 0, 2, 2])
+    print '  [2, 2, 0, 0] should return [4, 0, 0, 0] ->', merge_v6([2, 2, 0, 0])
+    print '  [2, 2, 2, 2, 2] should return [4, 4, 2, 0, 0] ->', merge_v6([2, 2, 2, 2, 2])
+    print '  [8, 16, 16, 8] should return [8, 32, 8, 0] ->', merge_v6([8, 16, 16, 8])
+
 #test_merge_v1()
 #test_merge_v2()
 #test_merge_v3()
 #test_merge_v4()
-test_merge_v5()
+#test_merge_v5()
+test_merge_v6()

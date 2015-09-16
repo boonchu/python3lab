@@ -5,9 +5,11 @@ GUI component of Mancala Solitaire
 
 import random
 try:
-        import simplegui
+  import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 except ImportError:
-        import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
+  import simplegui
+
+from SolitaireMancala import SolitaireMancala as mancala
 
 # Game and canvas constants
 # Focus on boards with six houses and one store
@@ -54,36 +56,36 @@ class MancalaGUI:
         self._frame.add_button("Restart board", self.restart_board, 200)
         self._frame.add_button("Make move", self.make_move, 200)
         self._frame.set_mouseclick_handler(self.click_move)
-        
+
         # fire up game and frame
         self._game = game
         self.new_board()
-        
+
     def start(self):
         """
         Start the GUI
         """
         self._frame.start()
-        
+
     def restart_board(self):
         """
         Restart the game with the current configuration
         """
         self._game.set_board(self.start_board)
-                   
+
     def new_board(self):
         """
         Restart the game with a new winnable baord
         """
         self.start_board = random.choice(WINNABLE_BOARDS)
         self.restart_board()
-    
+
     def make_move(self):
         """
         Compute and apply next move for solver
         """
         self._game.apply_move(self._game.choose_move())    
-        
+
     def click_move(self, pos):
         """
         Update game based on mouse click
@@ -117,9 +119,14 @@ class MancalaGUI:
             current_text_pos[0] -= HOUSE_NUM
             current_line_pos[0] -= HOUSE_NUM
 
-def run_gui(game):
+
+if __name__ == '__main__':
     """
     Run GUI with given game
     """
-    gui = MancalaGUI(game)
+    my_game = mancala()
+    config = [0, 0, 1, 1, 3, 5, 0]
+    my_game.set_board(config)
+
+    gui = MancalaGUI(my_game)
     gui.start()

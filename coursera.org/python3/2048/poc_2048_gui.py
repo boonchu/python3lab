@@ -6,11 +6,16 @@
 
 import os
 import math
+
 try:
-  import simplegui
-  import codeskulptor
-except ImportError:
   import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
+except ImportError:
+  import simplegui
+
+try:
+  import SimpleGUICS2Pygame.codeskulptor as codeskulptor
+except ImportError:
+  import codeskulptor
 
 # Tile Images
 IMAGENAME = "assets_2048.png"

@@ -302,6 +302,18 @@ def merge_15(line):
                 outp[idx] = cur
     return outp
 
+def merge_16(line):
+    """
+    Function that merges a single row or column in 2048.
+    """
+    new = [num for num in line if num] 
+    idx = 0 
+    while idx < len(new) - 1: 
+        if new[idx] == new[idx + 1]: 
+            new[idx] += new.pop(idx + 1) 
+        idx += 1 
+    return new + [0] * (len(line) - len(new)) 
+
 def val_to_lst(val, base=4):
     """Converts val to a list of digits in the chosen base"""
     lst = [] if val else [0]
@@ -342,6 +354,7 @@ def here_we_go():
                 merge_13 : "Philippe 1's merge",
                 merge_14 : "Philippe 3's merge",
                 merge_15 : "Mike's merge",
+                merge_16 : "Shax's merge",
 }
 
     timings = {}
