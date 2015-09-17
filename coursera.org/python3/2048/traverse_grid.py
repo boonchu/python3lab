@@ -164,6 +164,7 @@ def move(direction):
           saved_cols += [col]
           list.append(grid[row][col])
       merged_line = merge(list)
+      # use saved row/col to put merged tiles back on the grid
       for step in range(rows):
           grid[saved_rows[step]][saved_cols[step]] = merged_line[step]
 

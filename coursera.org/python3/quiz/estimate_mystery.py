@@ -1,6 +1,13 @@
 #! /usr/bin/env python
 """ 
 Program that computes mystery number
+
+Answers:
+    probability = Area of Circle / Area of Square
+
+Discussion:
+    https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=374
+
 """
 
 import math

@@ -8,6 +8,14 @@ import random
 import poc_ttt_gui
 import poc_ttt_provided as provided
 
+# These two lines change CodeSkulptor timeout to 1 minute (60 seconds).
+# Adjust if needed.
+try:
+  import SimpleGUICS2Pygame.codeskulptor as codeskulptor
+except ImportError:
+  import codeskulptor
+codeskulptor.set_timeout(60)
+
 # Constants for Monte Carlo simulator
 # You may change the values of these constants as desired, but
 # do not change their names.
@@ -49,8 +57,7 @@ def mc_update_scores(scores, board, player):
                   provided.PLAYERO : score[1],
                   provided.EMPTY   : 0.0}
 
-    _clone = [[ _dic_score[board.square(_row,_col)] for _col in range(board.get_dim())] 
-     for _row in range(board.get_dim())]
+    _clone = [[ _dic_score[board.square(_row,_col)] for _col in range(board.get_dim())] for _row in range(board.get_dim())]
     for _row in range(len(_clone)):
         for _col in range(len(_clone)):
             scores[_row][_col] += _clone[_row][_col]
@@ -95,10 +102,78 @@ def mc_move(board, player, trials):
         mc_update_scores(_scores,_boards, player)
     return get_best_move(board,_scores)
 
+
+# Your Tic-Tac-Toe implementation goes here
+
+def run_computer_versus_computer(ngames = 10,
+                                 first_player = provided.PLAYERX,
+                                 draw_board = False,
+                                 board_size = 3):
+    """
+    Computer plays ngames against itself, then win, lost, draw
+    statistics are displayed. Default for ngames is 10.
+
+    first_player is either provided.PLAYERX or provided.PLAYERO.
+    Default is provided.PLAYERX
+
+    draw_board can be set to True if you want to see the
+    play-by-play moves. The default is False.
+
+    board_size is the number of squares per row and column.
+    Default is 3 (standard Tic-Tac-Toe board size).
+    """
+    wins_x = 0
+    wins_o = 0
+    draws  = 0
+
+    for dummy_game_number in range(ngames):
+        if draw_board: print "GAME #", dummy_game_number + 1
+        board = provided.TTTBoard(board_size)
+        player = first_player
+
+        while not board.check_win():
+            move = mc_move(board, player, NTRIALS)
+            board.move(move[0], move[1], player)
+            player = provided.switch_player(player)
+            if draw_board: print; print str(board)
+
+        game_result = board.check_win()
+
+        if game_result == provided.PLAYERX:
+            if draw_board: print "X wins"
+            wins_x += 1
+        elif game_result == provided.PLAYERO:
+            if draw_board: print "O wins"
+            wins_o += 1
+        else:
+            if draw_board: print "It's a draw"
+            draws += 1
+
+        if draw_board: print
+
+    print "X won", wins_x, "out of", ngames, "(", 100.0 * wins_x / ngames, "%)"
+    print "O won", wins_o, "out of", ngames, "(", 100.0 * wins_o / ngames, "%)"
+    print "draws", draws,  "out of", ngames, "(", 100.0 * draws  / ngames, "%)"
+
 # Test game with the console or the GUI.  Uncomment whichever 
 # you prefer.  Both should be commented out when you submit 
 # for testing to save time.
 
 if __name__ == '__main__':
-    provided.play_game(mc_move, NTRIALS, False)
-    poc_ttt_gui.run_gui(3, provided.PLAYERX, mc_move, NTRIALS, False)
+    # two lines here for real game
+    #provided.play_game(mc_move, NTRIALS, False)
+    #poc_ttt_gui.run_gui(3, provided.PLAYERX, mc_move, NTRIALS, False)
+
+    # Play single game simulation,
+    # Play computer vs. computer with default settings:
+    #    10 games
+    #    'X' goes first
+    #    Quiet mode (board details not displayed)
+    #    Standard 3x3 board
+    #run_computer_versus_computer()
+
+    # This one runs plays 5 games. 'X' goes first, game details are shown.
+    #run_computer_versus_computer(150, provided.PLAYERX, False, 3)
+
+    # This one runs plays 5 games. 'O' goes first, game details are shown.
+    run_computer_versus_computer(150, provided.PLAYERO, False, 3)
