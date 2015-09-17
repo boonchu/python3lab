@@ -104,6 +104,8 @@ def mc_move(board, player, trials):
 
 
 # Your Tic-Tac-Toe implementation goes here
+# testing game
+# https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=414
 
 def run_computer_versus_computer(ngames = 10,
                                  first_player = provided.PLAYERX,
@@ -176,4 +178,4 @@ if __name__ == '__main__':
     #run_computer_versus_computer(150, provided.PLAYERX, False, 3)
 
     # This one runs plays 5 games. 'O' goes first, game details are shown.
-    run_computer_versus_computer(150, provided.PLAYERO, False, 3)
+    run_computer_versus_computer(1000, provided.PLAYERO, False, 3)
