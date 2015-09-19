@@ -7,6 +7,9 @@
 ###### Tic Tac Toe
   * https://class.coursera.org/principlescomputing1-004/assignment/view?assignment_id=7
 
+###### Use TTTBoard 
+  * https://class.coursera.org/principlescomputing1-004/wiki/TTTBoard
+
 ###### Expected Value
   * https://class.coursera.org/principlescomputing1-004/wiki/expected_value
 

@@ -2,6 +2,9 @@
 
 ![2048 game](https://raw.githubusercontent.com/boonchu/python3lab/master/coursera.org/python3/2048/2048.png)
 
+  * Core Share "It's time to share your work on mini-project two: 2048 (full)"
+    - https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=426
+
 ###### Rules
   * https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=324
 
@@ -28,3 +31,6 @@ You can probably combine some of this... for example, in step 4, you can check e
 in which case there is no need to check anything more since the player can still move.
 
 ```
+
+###### AI Algo applied in 2048
+    - http://stackoverflow.com/questions/22342854/what-is-the-optimal-algorithm-for-the-game-2048/22389702#22389702

@@ -23,6 +23,7 @@ NTRIALS = 10        # Number of trials to run
 SCORE_CURRENT = 1.0 # Score for squares played by the current player
 SCORE_OTHER = 1.0   # Score for squares played by the other player
 
+
 # Add your functions here.
 def mc_trial(board, player):
     """
@@ -38,6 +39,7 @@ def mc_trial(board, player):
         board.move(move[0], move[1], play)
         play = provided.switch_player(play)
     return board
+
 
 def mc_update_scores(scores, board, player):
     """
@@ -63,6 +65,7 @@ def mc_update_scores(scores, board, player):
             scores[_row][_col] += _clone[_row][_col]
     return scores
 
+
 def get_best_move(board, scores):
     """
     This function takes a current board and a grid of scores. The function
@@ -72,6 +75,22 @@ def get_best_move(board, scores):
     It is an error to call this function with a board that has no empty squares
     (there is no possible next move), so your function may do whatever it wants
     in that case. The case where the board is full will not be tested.
+
+    https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=418 
+
+        1) empty_squares = board.get_empty_squares()
+        2) find maximum value in these empty_squares
+        3) find all the squares with this maximum value
+        4) do the intersection of list of tuples you got from step 1 and step 3
+        5) return the tuple that you get by applying random.choice on the output of step 4
+
+    https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=346
+
+    #square with max score:
+    row, col = reduce(lambda x, y: x if scores[x[0]][x[1]] >= scores[y[0]][y[1]] else y,  board.get_empty_squares())
+    #list of squares with max score
+    filter(lambda cell: scores[cell[0]][cell[1]] == scores[row][col], board.get_empty_squares())
+
     """
     _sets = set([])
     _sets.add(board.get_empty_squares()[0])
@@ -83,6 +102,7 @@ def get_best_move(board, scores):
             best = scores[_index[0]][_index[1]]
     return _sets.pop()
 
+
 def mc_move(board, player, trials):
     """
     This function takes a current board, which player the machine player is, and
@@ -92,6 +112,9 @@ def mc_move(board, player, trials):
     a move for the machine player in the form of a (row, column) tuple.
 
     Be sure to use the other functions you have written!
+
+    Calling mc_update_scores() from mc_move()
+    https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=402
     """
     _index = 0
     _dim = board.get_dim()
@@ -128,8 +151,9 @@ def run_computer_versus_computer(ngames = 10,
     wins_o = 0
     draws  = 0
 
-    for dummy_game_number in range(ngames):
-        if draw_board: print "GAME #", dummy_game_number + 1
+    for dummy_game_number in xrange(ngames):
+        if draw_board:
+            print "GAME #", dummy_game_number + 1
         board = provided.TTTBoard(board_size)
         player = first_player
 
@@ -137,21 +161,27 @@ def run_computer_versus_computer(ngames = 10,
             move = mc_move(board, player, NTRIALS)
             board.move(move[0], move[1], player)
             player = provided.switch_player(player)
-            if draw_board: print; print str(board)
+            if draw_board:
+                print
+                print str(board)
 
         game_result = board.check_win()
 
         if game_result == provided.PLAYERX:
-            if draw_board: print "X wins"
+            if draw_board:
+                print "X wins"
             wins_x += 1
         elif game_result == provided.PLAYERO:
-            if draw_board: print "O wins"
+            if draw_board:
+                print "O wins"
             wins_o += 1
         else:
-            if draw_board: print "It's a draw"
+            if draw_board:
+                print "It's a draw"
             draws += 1
 
-        if draw_board: print
+        if draw_board:
+            print
 
     print "X won", wins_x, "out of", ngames, "(", 100.0 * wins_x / ngames, "%)"
     print "O won", wins_o, "out of", ngames, "(", 100.0 * wins_o / ngames, "%)"
@@ -162,20 +192,21 @@ def run_computer_versus_computer(ngames = 10,
 # for testing to save time.
 
 if __name__ == '__main__':
-    # two lines here for real game
-    #provided.play_game(mc_move, NTRIALS, False)
-    #poc_ttt_gui.run_gui(3, provided.PLAYERX, mc_move, NTRIALS, False)
-
     # Play single game simulation,
     # Play computer vs. computer with default settings:
     #    10 games
     #    'X' goes first
     #    Quiet mode (board details not displayed)
     #    Standard 3x3 board
-    #run_computer_versus_computer()
+    run_computer_versus_computer()
 
     # This one runs plays 5 games. 'X' goes first, game details are shown.
     #run_computer_versus_computer(150, provided.PLAYERX, False, 3)
 
     # This one runs plays 5 games. 'O' goes first, game details are shown.
-    run_computer_versus_computer(1000, provided.PLAYERO, False, 3)
+    #run_computer_versus_computer(1000, provided.PLAYERO, False, 3)
+
+    # two lines here for real game
+    #provided.play_game(mc_move, NTRIALS, False)
+    poc_ttt_gui.run_gui(3, provided.PLAYERX, mc_move, NTRIALS, False)
+
