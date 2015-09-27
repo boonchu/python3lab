@@ -33,4 +33,5 @@ in which case there is no need to check anything more since the player can still
 ```
 
 ###### AI Algo applied in 2048
+    - https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=360
     - http://stackoverflow.com/questions/22342854/what-is-the-optimal-algorithm-for-the-game-2048/22389702#22389702
