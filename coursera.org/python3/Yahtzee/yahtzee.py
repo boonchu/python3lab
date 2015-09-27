@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+
 """
 Planner for Yahtzee
 Simplifications:  only allow discard and roll, only score against upper level
@@ -82,9 +83,16 @@ def strategy(hand, num_die_sides):
 
 
 def run_example():
-    """
+    '''
     Compute the dice to hold and expected score for an example hand
-    """
+
+    https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=468
+
+    print expected_value((2, 2), 6, 1) => 4.83333333333
+    print expected_value((2, 4), 6, 3) => 7.69907407407
+    print expected_value((5, 5), 6, 4) => 13.6311728395
+
+    '''
     num_die_sides = 6
     hand = (1, 1, 1, 5, 6)
     hand_score, hold = strategy(hand, num_die_sides)
@@ -93,6 +101,9 @@ def run_example():
 
 run_example()
 
-
-#import poc_holds_testsuite
-#poc_holds_testsuite.run_suite(gen_all_holds)
+'''
+POC run test suite
+'''
+if __name__ == '__main__':
+    import poc_holds_testsuite
+    poc_holds_testsuite.run_suite(gen_all_holds)
