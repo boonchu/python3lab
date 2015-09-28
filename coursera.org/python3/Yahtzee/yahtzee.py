@@ -10,7 +10,9 @@ try:
   import SimpleGUICS2Pygame.codeskulptor as codeskulptor
 except ImportError:
   import codeskulptor
-codeskulptor.set_timeout(20)
+
+#import codeskulptor
+#codeskulptor.set_timeout(20)
 
 def gen_all_sequences(outcomes, length):
     """
@@ -99,8 +101,15 @@ def strategy(hand, num_die_sides):
     Returns a tuple where the first element is the expected score and
     the second element is a tuple of the dice to hold
     """
-    print gen_all_holds(hand)
-    return (0.0, ())
+    items = gen_all_holds(hand)
+    max = 0
+    holds = list()
+    for item in items:
+        val = expected_value(item, num_die_sides, len(hand)-len(item))
+        if max < val:
+            max = val
+            holds = item
+    return (max, holds)
 
 
 def run_example():
@@ -113,6 +122,11 @@ def run_example():
     print expected_value((2, 2), 6, 1), " value should be  => 4.83333333333"
     print expected_value((2, 4), 6, 3), " value should be => 7.69907407407"
     print expected_value((5, 5), 6, 4), " value should be => 13.6311728395"
+
+    num_die_sides = 6
+    hand = (1,)
+    hand_score, hold = strategy(hand, num_die_sides)
+    print "Best strategy for hand", hand, "is to hold", hold, "with expected score", hand_score
 
     num_die_sides = 6
     hand = (1, 1, 1, 5, 6)
