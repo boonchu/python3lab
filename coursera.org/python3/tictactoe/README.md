@@ -6,6 +6,7 @@
 
 ###### Tic Tac Toe
   * https://class.coursera.org/principlescomputing1-004/assignment/view?assignment_id=7
+  * https://www.khanacademy.org/computer-programming/tic-tac-toe-mc-20/5180145453760512
 
 ###### Use TTTBoard 
   * https://class.coursera.org/principlescomputing1-004/wiki/TTTBoard

@@ -52,6 +52,18 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
     num_free_dice: number of dice to be rolled
 
     Returns a floating point expected value
+
+    https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=471
+
+    expected value:
+    The hand (1,2,3,4,5) comes in 5! = 120 variants, the hand (1,1,2,2,2) comes in 5! / (2! * 3!) = 10 variants.
+
+    (n+m)!/n!m!
+
+    Shouldn't you be generating all enumerations of free dice?  You then determine all possible outcomes.  Each
+    outcome has equal probability of occurring.  It doesn't matter which are variants of which, since you listed
+    every possible outcome (including variants), and so this will be incorporated into your calculations already.
+
     """
     _outcomes = gen_all_sequences(range(1, num_die_sides+1), num_free_dice)
     sum_of_events = float(sum([score(held_dice + _event) for _event in _outcomes]))
@@ -63,6 +75,7 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
 def store_tuples(hand, length):
     """
     store all possible events from dice
+
     """
     if length == 0:
         return set([()])
@@ -84,6 +97,7 @@ def gen_all_holds(hand):
     hand: full yahtzee hand
 
     Returns a set of tuples, where each tuple is dice to hold
+
     """
     return store_tuples(hand, len(hand))
 
@@ -98,6 +112,9 @@ def strategy(hand, num_die_sides):
 
     Returns a tuple where the first element is the expected score and
     the second element is a tuple of the dice to hold
+
+    num_free_dice:
+    Use the more general formula: num_free_dice = len(hand) - len(held_dice)
     """
     items = gen_all_holds(hand)
     max_val = 0
@@ -116,8 +133,21 @@ def run_example():
 
     https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=468
 
+    https://class.coursera.org/principlescomputing1-004/forum/thread?thread_id=483
+    expected_value(held_dice=(1, 1), num_die_sides=6, num_free_dice=1)
+    all possilbe sequences after re-roll their respective hand values, and probabilities:
+    (1, 1, 1) = 3 = 3/6
+    (1, 1, 2) = 2 = 2/6
+    (1, 1, 3) = 3 = 3/6
+    (1, 1, 4) = 4 = 4/6
+    (1, 1, 5) = 5 = 5/6
+    (1, 1, 6) = 6 = 6/6
+    expected value (yatzee hand score) = 23/6 = 3.833
+
     '''
-    print expected_value((2, 2), 6, 1), " value should be  => 4.83333333333"
+    print expected_value((1, 1), 6, 1), " value should be => 3.83333333333"
+    print expected_value((2, 2), 6, 2), " value should be => 5.83333333333"
+    print expected_value((2, 2), 6, 1), " value should be => 4.83333333333"
     print expected_value((2, 4), 6, 3), " value should be => 7.69907407407"
     print expected_value((5, 5), 6, 4), " value should be => 13.6311728395"
 

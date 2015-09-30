@@ -10,7 +10,7 @@ def sequence_trials():
     Consider a sequence of trials in which a fair
     four-sided die (with faces numbered 1-4) is
     rolled twice.
-    
+
     What is the expected value of the product of the two die rolls?
     '''
     outcomes = (1, 2, 3, 4)
@@ -18,7 +18,7 @@ def sequence_trials():
     product = 0
 
     print "[DEBUG] state => %s size => %s" % (state, len(state))
-    
+
     for item in state:
         product += item[0] * item[1]
 
