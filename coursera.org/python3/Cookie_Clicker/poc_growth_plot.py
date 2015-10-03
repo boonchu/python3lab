@@ -21,15 +21,13 @@ def f(n):
     """
     A test function
     """
-    #return 0.1 * n ** 3 + 20 * n
-    return 2 **(-n)
+    return 0.1 * n ** 3 + 20 * n
 
 def g(n):
     """
     A test function
     """
-    return n
-    #return n ** 3
+    return n ** 3
     #return 20 * n ** 2
     #return .1 * n ** 4
 
