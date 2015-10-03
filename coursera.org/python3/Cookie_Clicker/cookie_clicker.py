@@ -3,6 +3,7 @@
 Cookie Clicker Simulator
 """
 
+import math
 import simpleplot
 
 # Used to increase the timeout, if necessary
@@ -130,7 +131,7 @@ class ClickerState:
         the CPS, and add an entry into the history. 
         """
         if self._current_cookies >= cost:
-            self._item_name = _item_name
+            self._item_name = item_name
             self._item_cost = cost
             self._current_cookies -= cost
             self._current_cps += additional_cps
@@ -150,18 +151,35 @@ def simulate_clicker(build_info, duration, strategy):
 
     For each iteration of the loop, your simulate_clicker function should do the following things:
 
-      Check the current time and break out of the loop if the duration has been passed.
-      Call the strategy function with the appropriate arguments to determine which item to purchase next. If the strategy function returns None, you should break out of the loop, as that means no more items will be purchased.
-      Determine how much time must elapse until it is possible to purchase the item. If you would have to wait past the duration of the simulation to purchase the item, you should end the simulation.
-      Wait until that time.
-      Buy the item.
-      Update the build information.
+      - Check the current time and break out of the loop if the duration has been passed.
+      - Call the strategy function with the appropriate arguments to determine which item to
+      purchase next. If the strategy function returns None, you should break out of the loop,
+      as that means no more items will be purchased.
+      - Determine how much time must elapse until it is possible to purchase the item. If you
+      would have to wait past the duration of the simulation to purchase the item, you should
+      end the simulation.
+      - Wait until that time.
+      - Buy the item.
+      - Update the build information.
 
     """
+    _next_purchase = build_info.clone()
+    _click = ClickerState()
 
-    # Replace with your code
-    return ClickerState()
+    while _click.get_time() <= duration:
+        _time_left = duration - _click.get_time()
+        _item_name = strategy(_click.get_cookies(), _click.get_cps(), _click.get_history(), _time_left, _next_purchase)
+        if _item_name == None:
+            break
+        if _click.time_until(_next_purchase.get_cost(_item_name)) > _time_left:
+            break
+        else:
+            _click.wait(_click.time_until(_next_purchase.get_cost(_item_name)))
+            _click.buy_item(_item_name, _next_purchase.get_cost(_item_name), _next_purchase.get_cps(_item_name))
+            _next_purchase.update_item(_item_name)
 
+    _click.wait(_time_left)
+    return _click
 
 def strategy_cursor_broken(cookies, cps, history, time_left, build_info):
     """
@@ -215,9 +233,9 @@ def run_strategy(strategy_name, time, strategy):
     # Uncomment out the lines below to see a plot of total cookies vs. time
     # Be sure to allow popups, if you do want to see it
 
-    # history = state.get_history()
-    # history = [(item[0], item[3]) for item in history]
-    # simpleplot.plot_lines(strategy_name, 1000, 400, 'Time', 'Total Cookies', [history], True)
+    history = state.get_history()
+    history = [(item[0], item[3]) for item in history]
+    simpleplot.plot_lines(strategy_name, 1000, 400, 'Time', 'Total Cookies', [history], True, ["Total Cookies"])
 
 def run():
     """

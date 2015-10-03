@@ -30,6 +30,9 @@ class BuildInfo:
 
         self._items = sorted(self._info.keys())
 
+    def __str__(self):
+        return str(self._info)
+
     def build_items(self):
         """
         Get a list of buildable items
