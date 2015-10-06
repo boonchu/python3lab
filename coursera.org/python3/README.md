@@ -76,3 +76,8 @@ SimpleGUITk (1.1.3)
 
 ###### using matplotlib
   * https://www.udacity.com/wiki/plotting-graphs-with-python
+
+###### CodeSkulptor (http://www.cs.rice.edu/~rixner/)
+  * https://github.com/skulpt/skulpt
+  * http://www.skulpt.org/
+  * http://codemirror.net/

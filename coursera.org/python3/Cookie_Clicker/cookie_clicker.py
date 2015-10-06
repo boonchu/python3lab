@@ -5,15 +5,15 @@ Cookie Clicker Simulator
 
 import math
 import simpleplot
+import poc_clicker_provided as provided
 
 # Used to increase the timeout, if necessary
-try:
-  import SimpleGUICS2Pygame.codeskulptor as codeskulptor
-except ImportError:
-  import codeskulptor
-codeskulptor.set_timeout(20)
+#try:
+#  import SimpleGUICS2Pygame.codeskulptor as codeskulptor
+#except ImportError:
+#  import codeskulptor
+#codeskulptor.set_timeout(20)
 
-import poc_clicker_provided as provided
 
 # Constants
 SIM_TIME = 10000000000.0
@@ -51,7 +51,11 @@ class ClickerState:
         return the state (possibly without the history list) as a string in a human readable format.
         This is primarily to help you develop and debug your program
         """
-        return "Total cookies :" + str(self._total_cookies) + " Current cookies :" + str(self._current_cookies) + " Current Time :" + str(self._current_time) + " Current CPS :" + str(self._current_cps) + "\n"
+        return "Time: " + str(self._current_time) + \
+        " Current Cookies: " + str(self._current_cookies) + \
+        " CPS: " + str(self._current_cps) + \
+        " Total Cookies: " + str(self._total_cookies) + \
+        " History (length: " + str(len(self._history_list)) + "): " + str(self._history_list)
 
     def get_cookies(self):
         """
@@ -207,19 +211,45 @@ def strategy_cheap(cookies, cps, history, time_left, build_info):
     """
     Always buy the cheapest item you can afford in the time left.
     """
-    return None
+    item_list  = build_info.build_items()
+    list_costs = map(build_info.get_cost, item_list)
+    cheap_index = list_costs.index(min(list_costs))
+    cheap_item  = item_list[cheap_index]
+    if (cookies + cps * time_left) < list_costs[cheap_index]:
+        return None
+    else:
+        return cheap_item
 
 def strategy_expensive(cookies, cps, history, time_left, build_info):
     """
     Always buy the most expensive item you can afford in the time left.
     """
-    return None
+    list_items  = build_info.build_items()
+    list_costs = map(build_info.get_cost, list_items)
+
+    temp_items = list()
+    temp_costs = list()
+    for idx in xrange(len(list_costs)):
+        if list_costs[idx] <= cookies + (cps * time_left):
+            temp_items.append(list_items[idx])
+            temp_costs.append(list_costs[idx])
+    if temp_costs == []:
+        return None
+    else:
+        return temp_items[temp_costs.index(max(temp_costs))]
+    
 
 def strategy_best(cookies, cps, history, time_left, build_info):
     """
     The best strategy that you are able to implement.
     """
-    return None
+    list_items  = build_info.build_items()
+    list_costs = map(build_info.get_cost, list_items)
+    list_cps   = map(build_info.get_cps, list_items)
+    list_best  = list()
+    for idx in xrange(len(list_items)):
+        list_best.append(list_cps[idx]/list_costs[idx])
+    return list_items[list_best.index(max(list_best))]
 
 def run_strategy(strategy_name, time, strategy):
     """
@@ -233,9 +263,9 @@ def run_strategy(strategy_name, time, strategy):
     # Uncomment out the lines below to see a plot of total cookies vs. time
     # Be sure to allow popups, if you do want to see it
 
-    history = state.get_history()
-    history = [(item[0], item[3]) for item in history]
-    simpleplot.plot_lines(strategy_name, 1000, 400, 'Time', 'Total Cookies', [history], True, ["Total Cookies"])
+    #history = state.get_history()
+    #history = [(item[0], item[3]) for item in history]
+    #simpleplot.plot_lines(strategy_name, 1000, 400, 'Time', 'Total Cookies', [history], True, ["Total Cookies"])
 
 def run():
     """
@@ -244,8 +274,12 @@ def run():
     run_strategy("Cursor", SIM_TIME, strategy_cursor_broken)
 
     # Add calls to run_strategy to run additional strategies
-    # run_strategy("Cheap", SIM_TIME, strategy_cheap)
-    # run_strategy("Expensive", SIM_TIME, strategy_expensive)
-    # run_strategy("Best", SIM_TIME, strategy_best)
+    run_strategy("Cheap", SIM_TIME, strategy_cheap)
+    run_strategy("Expensive", SIM_TIME, strategy_expensive)
+    run_strategy("Best", SIM_TIME, strategy_best)
 
-run()
+if __name__ == '__main__':
+    '''
+    POC run test suite
+    '''
+    run()
