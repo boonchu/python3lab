@@ -19,14 +19,15 @@ def gen_all_sequences(outcomes, length):
     """
 
     answer_set = set([()])
-    for dummy_idx in range(length):
-        temp_set = set()
-        for partial_sequence in answer_set:
-            for item in outcomes:
-                new_sequence = list(partial_sequence)
-                new_sequence.append(item)
-                temp_set.add(tuple(new_sequence))
-        answer_set = temp_set
+    for _ in range(length):
+        #temp_set = set()
+        #for partial_sequence in answer_set:
+        #    for item in outcomes:
+        #        new_sequence = list(partial_sequence)
+        #        new_sequence.append(item)
+        #        temp_set.add(tuple(new_sequence))
+        #answer_set = temp_set
+        answer_set = set([new_sequence + tuple([item]) for item in outcomes for new_sequence in answer_set])
     return answer_set
 
 
@@ -39,7 +40,8 @@ def score(hand):
 
     Returns an integer score 
     """
-    return 0 if len(hand)==0 else max([_num*hand.count(_num) for _num in set(hand)])
+    #return 0 if len(hand)==0 else max([_num*hand.count(_num) for _num in set(hand)])
+    return max([hand.count(die) * die for die in set(hand)])
 
 
 def expected_value(held_dice, num_die_sides, num_free_dice):
@@ -99,7 +101,9 @@ def gen_all_holds(hand):
     Returns a set of tuples, where each tuple is dice to hold
 
     """
-    return store_tuples(hand, len(hand))
+    #return store_tuples(hand, len(hand))
+    #return set(map(tuple, reduce(lambda r, d: r + [l + [d] for l in r], hand, [[]])))
+    return set(tuple(d for p, d in enumerate(hand) if i >> p & 1) for i in xrange(1 << len(hand)))
 
 
 def strategy(hand, num_die_sides):
@@ -116,15 +120,16 @@ def strategy(hand, num_die_sides):
     num_free_dice:
     Use the more general formula: num_free_dice = len(hand) - len(held_dice)
     """
-    items = gen_all_holds(hand)
-    max_val = 0
-    holds = list()
-    for item in items:
-        val = expected_value(item, num_die_sides, len(hand)-len(item))
-        if max_val < val:
-            max_val = val
-            holds = item
-    return (max_val, holds)
+    #items = gen_all_holds(hand)
+    #max_val = 0
+    #holds = list()
+    #for item in items:
+    #    val = expected_value(item, num_die_sides, len(hand)-len(item))
+    #    if max_val < val:
+    #        max_val = val
+    #        holds = item
+    #return (max_val, holds)
+    return max([(expected_value(hold, num_die_sides, len(hand) - len(hold)), hold) for hold in gen_all_holds(hand)])
 
 
 def run_example():

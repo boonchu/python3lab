@@ -51,11 +51,11 @@ class ClickerState:
         return the state (possibly without the history list) as a string in a human readable format.
         This is primarily to help you develop and debug your program
         """
-        output = "Time: " + str(self._current_time) +\
-        " Current Cookies: " + str(self._current_cookies) +\
-        " CPS: " + str(self._current_cps) +\
+        output = "Time: " + str(self.get_time()) +\
+        " Current Cookies: " + str(self.get_cookies()) +\
+        " CPS: " + str(self.get_cps()) +\
         " Total Cookies: " + str(self._total_cookies) +\
-        " History (length: " + str(len(self._history_list)) + "): " + str(self._history_list)
+        " History (length: " + str(len(self.get_history())) + "): " + str(self.get_history())
         return output
 
     def get_cookies(self):
@@ -95,7 +95,7 @@ class ClickerState:
         Should return a copy of any internal data structures,
         so that they will not be modified outside of the class.
         """
-        history_list = [(self._current_time, self._item_name, self._item_cost, self._total_cookies)]
+        history_list = self._history_list
         return history_list
 
     def time_until(self, cookies):
