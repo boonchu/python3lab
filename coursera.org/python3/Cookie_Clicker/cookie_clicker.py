@@ -51,11 +51,12 @@ class ClickerState:
         return the state (possibly without the history list) as a string in a human readable format.
         This is primarily to help you develop and debug your program
         """
-        return "Time: " + str(self._current_time) + \
-        " Current Cookies: " + str(self._current_cookies) + \
-        " CPS: " + str(self._current_cps) + \
-        " Total Cookies: " + str(self._total_cookies) + \
+        output = "Time: " + str(self._current_time) +\
+        " Current Cookies: " + str(self._current_cookies) +\
+        " CPS: " + str(self._current_cps) +\
+        " Total Cookies: " + str(self._total_cookies) +\
         " History (length: " + str(len(self._history_list)) + "): " + str(self._history_list)
+        return output
 
     def get_cookies(self):
         """
@@ -279,7 +280,7 @@ def run():
     run_strategy("Best", SIM_TIME, strategy_best)
 
 if __name__ == '__main__':
-    '''
+    """
     POC run test suite
-    '''
+    """
     run()
