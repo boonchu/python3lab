@@ -43,24 +43,19 @@ But let’s think about how to make that even better. Sure, the obvious choice i
 Well, if we have not enough cookies to buy anything we should accumulate enough cookies to buy the cheapest possible upgrade. Why? Let’s think this through:
 
 Option A: costs 10, gives +5 CPS and you need to wait 5 seconds.
-
 Option B: costs 12, gives +6 CPS and you need to wait 6 seconds.
 
 If you buy the upgrade B, then you wait 1 second extra. But the thing is, in this extra second you get only 2 cookies (since your current CPS is 2), whereas with option A in this spare second you’d make 7 cookies instead of 2.
 
 So if you don’t have enough cookies, you should collect enough to buy the cheapest possible option, since that one will start making you more cookies sooner.
 
-
 But what happens now if you do have enough cookies to buy an upgrade? Which one would you choose?
 
 Well, here the answer isn’t as obvious as above. To think about that, let’s consider the following example:
 
 Option A: costs 10, gives +5 CPS and you need to wait 5 seconds.
-
 Option B: costs 12, gives +6 CPS and you need to wait 6 seconds.
-
 Option C: costs 14, gives +7 CPS and you need to wait 7 seconds.
-
 Option D: costs 16, gives +8 CPS and you need to wait 8 seconds.
 
 Now let’s assume that when you buy an upgrade, the next one of that kind is not cost-efficient. This is assumed so that whenever we pick an upgrade, then the next time we have to pick one of the remaining.
@@ -68,25 +63,16 @@ Now let’s assume that when you buy an upgrade, the next one of that kind is no
 So we have 20 cookies. If we pick option A, which is the cheapest, then the above technique (where we don’t have enough cookies) is not optimal, since the cheapest has changed:
 
 Option A: costs 10, gives +5 CPS and you need to wait 5 seconds.
-
 Option B: costs 12, gives +6 CPS and you need to wait 6 seconds.
-
 Option C: costs 14, gives +7 CPS and you need to wait 7 seconds.
-
 Option D: costs 16, gives +8 CPS and you need to wait 8 seconds.
 
-
-
- But if he buy the most expensive we can (option D), then the algorithm for when we don’t have enough cookies works perfectly, since each time we will pick the least expensive option:
+But if he buy the most expensive we can (option D), then the algorithm for when we don’t have enough cookies works perfectly, since each time we will pick the least expensive option:
 
 Option A: costs 10, gives +5 CPS and you need to wait 5 seconds.
-
 Option B: costs 12, gives +6 CPS and you need to wait 6 seconds.
-
 Option C: costs 14, gives +7 CPS and you need to wait 7 seconds.
-
 Option D: costs 16, gives +8 CPS and you need to wait 8 seconds.
-
 
 So, we understand that if we have enough for various options, we should buy the most expensive one, so our other algorithm can work optimally.
 ```
