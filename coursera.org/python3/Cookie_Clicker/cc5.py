@@ -3,6 +3,7 @@
 Cookie Clicker Simulator
 """
 
+import random
 import math
 import simpleplot
 import poc_clicker_provided as provided
@@ -247,11 +248,8 @@ def strategy_best(cookies, cps, history, time_left, build_info):
     """
     The best strategy that you are able to implement.
     """
-    items = build_info.build_items()
-    cost  = map(build_info.get_cost, items)
-    cps   = map(build_info.get_cps, items)
-    best  = [ cps[_idx]/cost[_idx] for _idx in xrange(len(items)) ]
-    return items[best.index(max(best))]
+    return random.choice(["Antimatter Condenser", "Time Machine", "Portal"]) 
+
 
 def run_strategy(strategy_name, time, strategy):
     """
@@ -263,17 +261,17 @@ def run_strategy(strategy_name, time, strategy):
     # Plot total cookies over time
     # Uncomment out the lines below to see a plot of total cookies vs. time
     # Be sure to allow popups, if you do want to see it
-    history = state.get_history()
-    history = [(item[0], item[3]) for item in history]
-    simpleplot.plot_lines(strategy_name, 1000, 400, 'Time', 'Total Cookies', [history], True, ["Total Cookies"])
+    #history = state.get_history()
+    #history = [(item[0], item[3]) for item in history]
+    #simpleplot.plot_lines(strategy_name, 1000, 400, 'Time', 'Total Cookies', [history], True, ["Total Cookies"])
 
 def run():
     """
     Run the simulator.
     """
-    run_strategy("Cursor", SIM_TIME, strategy_cursor_broken)
-    run_strategy("Cheap", SIM_TIME, strategy_cheap)
-    run_strategy("Expensive", SIM_TIME, strategy_expensive)
+    #run_strategy("Cursor", SIM_TIME, strategy_cursor_broken)
+    #run_strategy("Cheap", SIM_TIME, strategy_cheap)
+    #run_strategy("Expensive", SIM_TIME, strategy_expensive)
     run_strategy("Best", SIM_TIME, strategy_best)
 
 if __name__ == '__main__':
