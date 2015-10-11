@@ -40,7 +40,7 @@ def score(hand):
 
     Returns an integer score 
     """
-    #return 0 if len(hand)==0 else max([_num*hand.count(_num) for _num in set(hand)])
+    #return 0 if len(hand)==0 else max([hand.count(die) * die for die in set(hand)])
     return max([hand.count(die) * die for die in set(hand)])
 
 
@@ -102,6 +102,7 @@ def gen_all_holds(hand):
 
     """
     #return store_tuples(hand, len(hand))
+    print hand
     #return set(map(tuple, reduce(lambda r, d: r + [l + [d] for l in r], hand, [[]])))
     return set(tuple(d for p, d in enumerate(hand) if i >> p & 1) for i in xrange(1 << len(hand)))
 
