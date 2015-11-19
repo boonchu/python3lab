@@ -94,3 +94,24 @@ $ fab -i keyec2.pem ec2 update
 {'gssapidelegatecredentials': 'yes', 'hostname': '8.8.8.8', 'gssapiauthentication': 'yes', 'passwordauthentication': 'no', 'user': 'root', 'forwardagent': 'yes', 'controlpath': '~/.ssh/cm_socket/%r@%h:%p', 'controlmaster': 'auto', 'controlpersist': '7200'}
 >>> 
 ```
+
+  * Fab with host role
+
+```
+from fabric.api import env,hosts,run,execute
+ 
+env.roledefs['webservers'] = ['foo01.bang.whiz.com', 'foo02.bang.whiz.com']
+env.roledefs['dbservers'] = ['db.bang.whiz.com']
+ 
+@roles('webservers')
+def install_apache():
+    run('apt-get install apache2', with_sudo=True)
+ 
+@roles('dbservers')
+def install_mysql():
+    run('apt-get install mysql-server', with_sudo=True)
+ 
+def deploy():
+    execute(install_apache)
+    execute(install_mysql)
+```
