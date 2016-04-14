@@ -127,7 +127,7 @@ True
 >>> x.list is y.list
 False
 ```
- * Coverage Testing
+ * Coverage Testing and Reporting
 ```
  - $ pip install coverage
  - $ coverage run --source HelloWorld HelloWorld.py
@@ -140,4 +140,6 @@ False
  Name            Stmts   Miss  Cover   Missing
  ---------------------------------------------
  HelloWorld.py      17      0   100%
+ - $ coverage html
+ - $ open htmlconv/index.html
 ```
