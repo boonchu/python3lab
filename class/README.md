@@ -127,3 +127,19 @@ True
 >>> x.list is y.list
 False
 ```
+ * Coverage Testing and Reporting
+```
+ - $ pip install coverage
+ - $ coverage run --source HelloWorld HelloWorld.py
+ ..
+ ----------------------------------------------------------------------
+ Ran 2 tests in 0.000s
+
+ OK
+ - $ coverage report -m
+ Name            Stmts   Miss  Cover   Missing
+ ---------------------------------------------
+ HelloWorld.py      17      0   100%
+ - $ coverage html
+ - $ open htmlconv/index.html
+```
