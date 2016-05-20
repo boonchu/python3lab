@@ -12,6 +12,15 @@ pip 8.1.2 from /usr/local/lib/python3.5/site-packages (python 3.5)
 * pip3 install --upgrade "ipython[all]"
 * pip3 install -U 'jupyter[notebook]'
 
+* config the jupyter
+
+```
+$ jupyter --config
+/Users/bigchoo/.jupyter
+
+
+```
+
 * jupyter notebook
 
 * jupyter console
@@ -66,3 +75,8 @@ Out[10]: [7]
 In [11]: my_list[::-1]
 Out[11]: [9, 7, 5, 3, 1]
 ```
+
+### Ref
+
+* https://www.youtube.com/watch?v=o8fmjaW9a0A
+* https://github.com/ipython-contrib/IPython-notebook-extensions/issues/282
