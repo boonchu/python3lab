@@ -79,4 +79,8 @@ Out[11]: [9, 7, 5, 3, 1]
 ### Ref
 
 * https://www.youtube.com/watch?v=o8fmjaW9a0A
+
+### Issue with matlab
+
+* http://stackoverflow.com/questions/32400732/jupyter-notebook-extensions-fail-to-load
 * https://github.com/ipython-contrib/IPython-notebook-extensions/issues/282
