@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 
-class C:
+class C(object):
+    """docstring:
+    http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
+    """
+
+
     def __init__(self, disc):
-        """ object disc """
+        """object disc """
         self.disk = disc
 
     def get_disk(self):
@@ -13,8 +18,7 @@ class C:
             return self.disk
 
     def get_jukebox(self):
-        """
-        get jukebox if available. otherwise, defines as default.
+        """get jukebox if available. otherwise, defines as default.
         """ 
         jukebox = getattr(self, 'jukebox', {})
         if jukebox:
@@ -24,8 +28,7 @@ class C:
             return self.jukebox
 
     def set_jukebox(self, **kwargs):
-        """
-        set jukebox if declares value
+        """set jukebox if declares value
         """
         jukebox = self.get_jukebox()
         values = kwargs.get('jukebox')
@@ -34,8 +37,11 @@ class C:
 
 
 if __name__ == '__main__':
-    """
-    testing class instance
+    """testing class instance
+    checking instance
+    http://effbot.org/pyfaq/how-do-i-check-if-an-object-is-an-instance-of-a-given-class-or-of-a-subclass-of-it.htm
+    using asserting effectively
+    https://wiki.python.org/moin/UsingAssertionsEffectively
     """
     assert isinstance(C('three'), C), 'test prep: class should be class'
 
@@ -43,6 +49,7 @@ if __name__ == '__main__':
     checking get_disk()
     """
     c = C('five')
+    assert isinstance(c, C), 'test prep: c should be class C'
     try:
         print 'test #0: PASSED'
         assert c.get_disk() == 'five'
