@@ -2,5 +2,22 @@
 
 from jinja2 import Template
 
-template = Template('Hello {{ name }}')
-print template.render(name='John Doe')
+template = Template(
+"""
+<ul>
+{% for row in rows %}
+    <li class="{{ loop.cycle('odd', 'even') }}">{{ row }}</li>
+{% endfor %}
+</ul>
+
+<ul>
+{% for key, value in users.items() %}
+    <li><a href="{{ key }}">{{ value }}</a></li>
+{% endfor %}
+</ul>
+""")
+
+print template.render(
+        rows=['John Doe', 'John Smith'],
+        users={'url': 'http://example.com', 'username': 'bigchoo'},
+)
