@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+from jinja2 import Template
+
+dicts = [
+    {'A': 'val1', 'B': 'val2', 'content': [["1.1", "2.2"]]},
+    {'A': 'val3', 'B': 'val4', 'content': [["3.3", "4.4"]]},
+]
+
+template = Template(
+"""
+{% for item in dicts %}
+This example has {{item['A']}} and {{item['B']}}:
+    with the content --
+    {% for _x in item['content'] %}{{_x[0]}} and {{_x[1]}}{% endfor %}
+{% endfor %}
+""")
+
+print template.render(dicts=dicts)
