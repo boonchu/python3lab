@@ -1,0 +1,41 @@
+# http://campus.codeschool.com/courses/digging-into-django/contents
+
+python manage.py syncdb
+python manage.py runserver
+python manage.py dumpdata
+
+update icecream/settings.py
+https://docs.djangoproject.com/en/1.7/ref/templates/api/#django.template.loaders.app_directories.Loader
+```
+INSTALLED_APP = ( 'icecream' )
+```
+
+adding models
+https://www.webforefront.com/django/setupdjangomodels.html
+http://www.tangowithdjango.com/book17/chapters/models.html
+
+python manage.py sqlall icecream
+python manage.py migrate
+python manage.py makemigrations icecream
+Migrations for 'icecream':
+  0001_initial.py:
+    - Create model Location
+
+testing model
+python
+>>> from icecream.models import Location
+>>> print Location.objects.all()
+
+>>> locations = Location(name='city', value='1')
+>>> locations.save()
+>>> print Location.objects.all()
+[<Location: Location object>]
+
+update icecream/urls.py
+https://docs.djangoproject.com/en/1.10/topics/http/urls/
+
+building templates
+https://docs.djangoproject.com/en/1.9/ref/templates/builtins/#dictsort
+
+Using python regex
+http://www.pyregex.com/

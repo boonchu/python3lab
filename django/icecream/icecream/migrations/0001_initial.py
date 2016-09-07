@@ -11,12 +11,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Flavors',
+            name='Location',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.TextField()),
-                ('price', models.TextField()),
-                ('type', models.TextField()),
+                ('name', models.CharField(max_length=100)),
+                ('value', models.DecimalField(max_digits=10, decimal_places=2)),
             ],
         ),
     ]
