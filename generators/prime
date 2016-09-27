@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+# https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/
+
+import math
+
+def is_prime(number):
+    ''' check if integer number is prime'''
+    number = abs(int(number))
+    # 0 and 1 are not primes
+    if number > 1:
+        # 2 is only even prime number, skip
+        if number == 2:
+            return True
+        # all other even numbers are not primes
+        if number % 2 == 0 or not number & 1:
+            return False
+        # range starts with 3 and only needs to go up to square root of n
+        # for all odd numbers
+        for current in range(3, int(math.sqrt(number) + 1), 2):
+            if number % current == 0: 
+                return False
+        return True
+    return False
+
+
+def get_primes_1(input_list):
+    ''' iterate to find prime from list'''
+    return (element for element in input_list if is_prime(element))
+
+
+def get_primes_2(max):
+    ''' use generator to find prime from list'''
+    i = 0
+    while i < max:
+        if is_prime(i):
+            yield i
+        i += 1
+
+
+print list(get_primes_1([x for x in xrange(300)]))
+print list(get_primes_2(300))

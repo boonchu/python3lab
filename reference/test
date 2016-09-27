@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+
+def append(list):
+    list.append(1)
+
+def reassign(list):
+    list = [0, 1]
+
+list = [0]
+reassign(list)
+print list
+append(list)
+print list
+list_tmp = list
+list_tmp.append(2)
+print list
